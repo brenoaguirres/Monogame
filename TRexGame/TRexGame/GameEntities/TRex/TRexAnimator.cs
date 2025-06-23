@@ -55,7 +55,7 @@ namespace TRexGame.GameEntities.TRex
                     }
                 }
 
-                if (CurrentTimeStamp >= CurrentAnimation.CurrentFrameTimestamp && !CurrentAnimation.IsLastFrame)
+                if (CurrentTimeStamp >= CurrentAnimation.CurrentFrameTimestamp + CurrentAnimation.TotalFrameTime)
                     GameDrawable.Sprite = CurrentAnimation.NextSprite();
 
                 CurrentTimeStamp += (float)gameTime.ElapsedGameTime.TotalSeconds;

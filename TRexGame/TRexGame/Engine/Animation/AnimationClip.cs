@@ -35,23 +35,23 @@ namespace TRexGame.Engine.Animation
         public bool LoopAnimation { get => _loopAnimation; set => _loopAnimation = value; }
         public float AnimationSpeed => _animationSpeed;
         public float TotalAnimationTime { get; private set; }
-        public bool IsLastFrame { get { return _currentFrameIndex == _sprites.Length - 1; } }
+        public float TotalFrameTime { get; private set; }
         #endregion
 
         #region PRIVATE METHODS
         private void GenerateFrames()
         {
-            float timestampPerFrame = (1.0f / _animationSpeed) / _sprites.Length;
+            TotalFrameTime = (1.0f / _animationSpeed) / _sprites.Length;
             float timestamp = 0;
 
             _frames = new();
             foreach (var sprite in _sprites)
             {
                 _frames.Add(new Frame(sprite, timestamp));
-                timestamp += timestampPerFrame;
+                timestamp += TotalFrameTime;
             }
 
-            TotalAnimationTime = timestamp + timestampPerFrame;
+            TotalAnimationTime = timestamp;
         }
         #endregion
 
