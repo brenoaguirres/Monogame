@@ -1,4 +1,4 @@
-﻿namespace TRexGame.Resources
+﻿namespace TRexGame.Engine.Resources
 {
     public static class GameConstants
     {

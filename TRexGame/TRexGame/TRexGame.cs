@@ -3,8 +3,8 @@ using Microsoft.Xna.Framework.Audio;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
-
-using TRexGame.Resources;
+using TRexGame.Engine.Resources;
+using TRexGame.GameEntities;
 
 namespace TRexGame
 {
@@ -12,20 +12,17 @@ namespace TRexGame
     {
         private GraphicsDeviceManager _graphics;
         private SpriteBatch _spriteBatch;
+        private GameResources _gameResources;
 
-        #region ASSETS
-        private SoundEffect _sfxHit;
-        private SoundEffect _sfxBtnPress;
-        private SoundEffect _sfxScore;
-
-        private Texture2D _spriteSheetTexture;
-        #endregion
+        private TRex _tRex;
 
         public TRexGame()
         {
             _graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
             IsMouseVisible = true;
+
+            _gameResources = new GameResources();
         }
 
         protected override void Initialize()
@@ -39,11 +36,9 @@ namespace TRexGame
         {
             _spriteBatch = new SpriteBatch(GraphicsDevice);
 
-            _sfxHit = Content.Load<SoundEffect>(GameConstants.SFX_HIT);
-            _sfxScore = Content.Load<SoundEffect>(GameConstants.SFX_SCORE);
-            _sfxBtnPress = Content.Load<SoundEffect>(GameConstants.SFX_BTN_00);
+            _gameResources.LoadResourcePack(Content);
 
-            _spriteSheetTexture = Content.Load<Texture2D>(GameConstants.TEX_TREX_SPRITESHEET);
+            _tRex = new(_gameResources);
         }
 
         protected override void Update(GameTime gameTime)
@@ -51,7 +46,7 @@ namespace TRexGame
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
                 Exit();
 
-            // TODO: Add your update logic here
+            _tRex.Update(gameTime);
 
             base.Update(gameTime);
         }
@@ -62,7 +57,7 @@ namespace TRexGame
 
             _spriteBatch.Begin();
 
-            _spriteBatch.Draw(_spriteSheetTexture, new Vector2(10, 10), new Rectangle(848, 0, 44, 52), Color.White);
+            _tRex.Draw(_spriteBatch, gameTime);
 
             _spriteBatch.End();
 

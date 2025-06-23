@@ -29,3 +29,4 @@ C:\Users\khsfg\Documents\GitHub\Monogame\TRexGame\TRexGame\bin\Debug\net8.0-wind
 C:\Users\khsfg\Documents\GitHub\Monogame\TRexGame\TRexGame\bin\Debug\net8.0-windows\Content\score-reached.xnb
 C:\Users\khsfg\Documents\GitHub\Monogame\TRexGame\TRexGame\bin\Debug\net8.0-windows\Content\TrexIcon.xnb
 C:\Users\khsfg\Documents\GitHub\Monogame\TRexGame\TRexGame\bin\Debug\net8.0-windows\Content\TrexSpritesheet.xnb
+C:\Users\khsfg\Documents\GitHub\Monogame\TRexGame\TRexGame\obj\Debug\net8.0-windows\TRexGame.sourcelink.json

@@ -3,16 +3,12 @@
   "WorkspaceRootPath": "C:\\Users\\khsfg\\Documents\\GitHub\\Monogame\\TRexGame\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{308BE2A6-DE31-4B9F-8248-7AF26CCFEE3B}|TRexGame\\TRexGame.csproj|c:\\users\\khsfg\\documents\\github\\monogame\\trexgame\\trexgame\\spritemanager\\sprite.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{308BE2A6-DE31-4B9F-8248-7AF26CCFEE3B}|TRexGame\\TRexGame.csproj|solutionrelative:trexgame\\spritemanager\\sprite.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{308BE2A6-DE31-4B9F-8248-7AF26CCFEE3B}|TRexGame\\TRexGame.csproj|c:\\users\\khsfg\\documents\\github\\monogame\\trexgame\\trexgame\\trexgame.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{308BE2A6-DE31-4B9F-8248-7AF26CCFEE3B}|TRexGame\\TRexGame.csproj|solutionrelative:trexgame\\trexgame.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{308BE2A6-DE31-4B9F-8248-7AF26CCFEE3B}|TRexGame\\TRexGame.csproj|c:\\users\\khsfg\\documents\\github\\monogame\\trexgame\\trexgame\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{308BE2A6-DE31-4B9F-8248-7AF26CCFEE3B}|TRexGame\\TRexGame.csproj|solutionrelative:trexgame\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{308BE2A6-DE31-4B9F-8248-7AF26CCFEE3B}|TRexGame\\TRexGame.csproj|c:\\users\\khsfg\\documents\\github\\monogame\\trexgame\\trexgame\\gameentities\\trex.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{308BE2A6-DE31-4B9F-8248-7AF26CCFEE3B}|TRexGame\\TRexGame.csproj|solutionrelative:trexgame\\gameentities\\trex.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -22,45 +18,32 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 1,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "Sprite.cs",
-              "DocumentMoniker": "C:\\Users\\khsfg\\Documents\\GitHub\\Monogame\\TRexGame\\TRexGame\\SpriteManager\\Sprite.cs",
-              "RelativeDocumentMoniker": "TRexGame\\SpriteManager\\Sprite.cs",
-              "ToolTip": "C:\\Users\\khsfg\\Documents\\GitHub\\Monogame\\TRexGame\\TRexGame\\SpriteManager\\Sprite.cs",
-              "RelativeToolTip": "TRexGame\\SpriteManager\\Sprite.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-22T17:05:24.788Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "TRexGame.cs",
-              "DocumentMoniker": "C:\\Users\\khsfg\\Documents\\GitHub\\Monogame\\TRexGame\\TRexGame\\TRexGame.cs",
-              "RelativeDocumentMoniker": "TRexGame\\TRexGame.cs",
-              "ToolTip": "C:\\Users\\khsfg\\Documents\\GitHub\\Monogame\\TRexGame\\TRexGame\\TRexGame.cs",
-              "RelativeToolTip": "TRexGame\\TRexGame.cs",
-              "ViewState": "AgIAACsAAAAAAAAAAAAiwDsAAAAJAAAAAAAAAA==",
+              "Title": "TRex.cs",
+              "DocumentMoniker": "C:\\Users\\khsfg\\Documents\\GitHub\\Monogame\\TRexGame\\TRexGame\\GameEntities\\TRex.cs",
+              "RelativeDocumentMoniker": "TRexGame\\GameEntities\\TRex.cs",
+              "ToolTip": "C:\\Users\\khsfg\\Documents\\GitHub\\Monogame\\TRexGame\\TRexGame\\GameEntities\\TRex.cs",
+              "RelativeToolTip": "TRexGame\\GameEntities\\TRex.cs",
+              "ViewState": "AgIAABcAAAAAAAAAAAAiwCkAAAAwAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-22T04:46:00.094Z",
+              "WhenOpened": "2025-06-23T02:07:36.91Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 0,
               "Title": "Program.cs",
               "DocumentMoniker": "C:\\Users\\khsfg\\Documents\\GitHub\\Monogame\\TRexGame\\TRexGame\\Program.cs",
               "RelativeDocumentMoniker": "TRexGame\\Program.cs",
               "ToolTip": "C:\\Users\\khsfg\\Documents\\GitHub\\Monogame\\TRexGame\\TRexGame\\Program.cs",
               "RelativeToolTip": "TRexGame\\Program.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAsAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-22T04:45:53.485Z",
+              "WhenOpened": "2025-06-22T23:35:09.587Z",
               "EditorCaption": ""
             }
           ]

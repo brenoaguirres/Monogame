@@ -4,13 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace TRexGame.SpriteManager
+namespace TRexGame.Engine.Entities
 {
-    public class Sprite
+    public enum Layer
     {
-        public Sprite()
-        {
-
-        }
+        Default,
+        Player,
     }
 }
