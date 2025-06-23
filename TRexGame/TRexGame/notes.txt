@@ -1,3 +1,5 @@
+dotnet new install MonoGame.Templates.CSharp
+
 dotnet tool install dotnet-mgcb-editor-windows -g
 
 mgcb-editor-windows C:\Users\khsfg\Documents\GitHub\Monogame\TRexGame\TRexGame\Content\Content.mgcb

@@ -1,21 +1,27 @@
 ﻿using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Audio;
-using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using TRexGame.Engine.Resources;
-using TRexGame.GameEntities;
+using TRexGame.GameEntities.TRex;
 
 namespace TRexGame
 {
     public class TRexGame : Game
     {
+        #region CONSTANTS
+        public const int WINDOW_W = 600;
+        public const int WINDOW_H = 150;
+        #endregion
+
+        #region FIELDS
         private GraphicsDeviceManager _graphics;
         private SpriteBatch _spriteBatch;
         private GameResources _gameResources;
 
         private TRex _tRex;
+        #endregion
 
+        #region CONSTRUCTOR
         public TRexGame()
         {
             _graphics = new GraphicsDeviceManager(this);
@@ -24,12 +30,16 @@ namespace TRexGame
 
             _gameResources = new GameResources();
         }
+        #endregion
 
+        #region GAME LOOP
         protected override void Initialize()
         {
-            // TODO: Add your initialization logic here
-
             base.Initialize();
+
+            _graphics.PreferredBackBufferWidth = WINDOW_W;
+            _graphics.PreferredBackBufferHeight = WINDOW_H;
+            _graphics.ApplyChanges();
         }
 
         protected override void LoadContent()
@@ -38,7 +48,7 @@ namespace TRexGame
 
             _gameResources.LoadResourcePack(Content);
 
-            _tRex = new(_gameResources);
+            _tRex = new(_gameResources, WINDOW_W, WINDOW_H);
         }
 
         protected override void Update(GameTime gameTime)
@@ -53,7 +63,7 @@ namespace TRexGame
 
         protected override void Draw(GameTime gameTime)
         {
-            GraphicsDevice.Clear(Color.CornflowerBlue);
+            GraphicsDevice.Clear(Color.White);
 
             _spriteBatch.Begin();
 
@@ -63,5 +73,6 @@ namespace TRexGame
 
             base.Draw(gameTime);
         }
+        #endregion
     }
 }

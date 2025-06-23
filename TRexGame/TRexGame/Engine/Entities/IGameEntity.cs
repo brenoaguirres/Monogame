@@ -17,7 +17,6 @@ namespace TRexGame.Engine.Entities
 
         #region PUBLIC METHODS
         void Update(GameTime gameTime);
-        void Draw(SpriteBatch spriteBatch, GameTime gameTime);
         #endregion
     }
 }
