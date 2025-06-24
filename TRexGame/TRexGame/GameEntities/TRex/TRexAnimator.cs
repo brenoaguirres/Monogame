@@ -3,76 +3,56 @@ using Microsoft.Xna.Framework.Graphics;
 using TRexGame.Engine.Animation;
 using TRexGame.Engine.Graphics;
 using TRexGame.Engine.Entities;
+using System;
+using System.Drawing;
 
 namespace TRexGame.GameEntities.TRex
 {
     public class TRexAnimator : Animator
     {
         #region CONSTRUCTOR
-        public TRexAnimator(Texture2D texture, IGameDrawable drawable)
+        public TRexAnimator(Texture2D texture, IGameDrawable drawable) : base (new TRexGraphics(texture), drawable)
         {
-            Graphics = new(texture);
-            CurrentAnimation = Graphics.IdleAnimation;
-            GameDrawable = drawable;
-            GameDrawable.Sprite = CurrentAnimation.CurrentFrameSprite;
-
-            InitializeAnimator();
         }
         #endregion
 
-        #region PROPERTIES
-        public TRexGraphics Graphics { get; }
-        public AnimationClip DefaultAnimation => Graphics.IdleAnimation;
-        public AnimationClip CurrentAnimation {  get; private set; }
-        public IGameDrawable GameDrawable { get; private set; }
-
-
-        public bool isPlaying = false;
-        public float CurrentTimeStamp { get; private set; }
-        public float TotalTimeStamp { get; private set; }
+        #region FIELDS
+        private bool _defaultIdle = true;
+        private float _idleReset = 2f;
+        private float _idleTimer = 0f;
         #endregion
 
         #region PRIVATE METHODS
-        private void InitializeAnimator()
+        public void UpdateIdleState(GameTime gameTime, TRexGraphics graphics)
         {
-            Play(DefaultAnimation);
+            if (_idleTimer <= 0)
+            {
+                if (!_defaultIdle)
+                {
+                    Play(graphics.IdleAnimation);
+                    _defaultIdle = true;
+                }
+                else
+                {
+                    Play(graphics.BlinkAnimation);
+                    _defaultIdle = false;
+                }
+
+                _idleTimer = _idleReset;
+            }
+            else
+            {
+                _idleTimer -= (float)gameTime.ElapsedGameTime.TotalSeconds;
+            }
         }
         #endregion
 
         #region PUBLIC METHODS
-        public override void Update(GameTime gameTime)
+        public override void UpdateStates(GameTime gameTime)
         {
-            if (isPlaying)
-            {
-                if (CurrentTimeStamp >= TotalTimeStamp)
-                {
-                    if (!CurrentAnimation.LoopAnimation)
-                        Stop();
-                    else
-                    {
-                        GameDrawable.Sprite = CurrentAnimation.NextSprite();
-                        Play(CurrentAnimation);
-                    }
-                }
+            TRexGraphics graphics = Graphics as TRexGraphics;
 
-                if (CurrentTimeStamp >= CurrentAnimation.CurrentFrameTimestamp + CurrentAnimation.TotalFrameTime)
-                    GameDrawable.Sprite = CurrentAnimation.NextSprite();
-
-                CurrentTimeStamp += (float)gameTime.ElapsedGameTime.TotalSeconds;
-            }
-        }
-
-        public void Play(AnimationClip animationClip)
-        {
-            CurrentAnimation = animationClip;
-            CurrentTimeStamp = 0;
-            TotalTimeStamp = CurrentAnimation.TotalAnimationTime;
-            isPlaying = true;
-        }
-
-        public void Stop()
-        {
-            isPlaying = false;
+            UpdateIdleState(gameTime, graphics);
         }
         #endregion
     }

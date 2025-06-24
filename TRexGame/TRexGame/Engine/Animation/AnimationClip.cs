@@ -36,6 +36,7 @@ namespace TRexGame.Engine.Animation
         public float AnimationSpeed => _animationSpeed;
         public float TotalAnimationTime { get; private set; }
         public float TotalFrameTime { get; private set; }
+        public int CurrentFrameIndex { get => _currentFrameIndex; set => _currentFrameIndex = value; }
         #endregion
 
         #region PRIVATE METHODS
@@ -58,14 +59,19 @@ namespace TRexGame.Engine.Animation
         #region PUBLIC METHODS
         public Sprite NextSprite()
         {
-            
             if (_currentFrameIndex < _sprites.Length)
                 _currentFrameIndex++;
             
             if (_currentFrameIndex >= _sprites.Length && _loopAnimation)
                 _currentFrameIndex = 0;
 
+            DispatchFrameEvents();
             return _sprites[_currentFrameIndex];
+        }
+        public void DispatchFrameEvents()
+        {
+            if (_frames[_currentFrameIndex].DispatchEvent)
+                _frames[_currentFrameIndex].OnFrame?.Invoke(_frames[_currentFrameIndex]);
         }
         #endregion
     }

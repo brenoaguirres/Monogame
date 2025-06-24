@@ -82,7 +82,7 @@ namespace TRexGame.GameEntities.TRex
             State = TRexState.IDLE;
             Position = new(
                     TREX_START_POS_X,
-                    _screenHeight - TREX_START_POS_Y - Animator.CurrentAnimation.CurrentFrameSprite.RectTransform.Height
+                    _screenHeight - TREX_START_POS_Y - Sprite.RectTransform.Height
                 );
 
             Speed = 10;

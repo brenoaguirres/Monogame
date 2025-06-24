@@ -4,11 +4,11 @@
   <Platform>Windows</Platform>
   <Config />
   <SourceFiles>
-    <File>C:/Users/breno/Documents/GitHub/Monogame/TRexGame/TRexGame/Content/button-press.mp3</File>
-    <File>C:/Users/breno/Documents/GitHub/Monogame/TRexGame/TRexGame/Content/hit.mp3</File>
-    <File>C:/Users/breno/Documents/GitHub/Monogame/TRexGame/TRexGame/Content/score-reached.mp3</File>
-    <File>C:/Users/breno/Documents/GitHub/Monogame/TRexGame/TRexGame/Content/TrexIcon.ico</File>
-    <File>C:/Users/breno/Documents/GitHub/Monogame/TRexGame/TRexGame/Content/TrexSpritesheet.png</File>
+    <File>C:/Users/Breno/Documents/GitHub/Monogame/TRexGame/TRexGame/Content/button-press.mp3</File>
+    <File>C:/Users/Breno/Documents/GitHub/Monogame/TRexGame/TRexGame/Content/hit.mp3</File>
+    <File>C:/Users/Breno/Documents/GitHub/Monogame/TRexGame/TRexGame/Content/score-reached.mp3</File>
+    <File>C:/Users/Breno/Documents/GitHub/Monogame/TRexGame/TRexGame/Content/TrexIcon.ico</File>
+    <File>C:/Users/Breno/Documents/GitHub/Monogame/TRexGame/TRexGame/Content/TrexSpritesheet.png</File>
   </SourceFiles>
   <DestFiles>
     <File xsi:nil="true" />
