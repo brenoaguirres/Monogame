@@ -29,8 +29,7 @@ namespace TRexGame.Engine.Animation
 
 
         public bool isPlaying = false;
-        public float CurrentTimeStamp { get; protected set; }
-        public float TotalTimeStamp { get; protected set; }
+        public float PlaybackTime { get; protected set; }
         #endregion
 
         #region EVENTS
@@ -56,7 +55,7 @@ namespace TRexGame.Engine.Animation
 
             if (isPlaying)
             {
-                if (CurrentTimeStamp >= TotalTimeStamp)
+                if (PlaybackTime >= CurrentAnimation.ClipDuration)
                 {
                     if (!CurrentAnimation.LoopAnimation)
                         Stop();
@@ -67,19 +66,18 @@ namespace TRexGame.Engine.Animation
                     }
                 }
 
-                if (CurrentTimeStamp >= CurrentAnimation.CurrentFrameTimestamp + CurrentAnimation.TotalFrameTime)
+                if (PlaybackTime >= CurrentAnimation.CurrentFrameTimestamp + CurrentAnimation.TotalFrameTime)
                     GameDrawable.Sprite = CurrentAnimation.NextSprite();
 
-                CurrentTimeStamp += (float)gameTime.ElapsedGameTime.TotalSeconds;
+                PlaybackTime += (float)gameTime.ElapsedGameTime.TotalSeconds;
             }
         }
 
         public void Play(AnimationClip animationClip)
         {
             CurrentAnimation = animationClip;
-            CurrentTimeStamp = 0;
-            CurrentAnimation.CurrentFrameIndex = 0;
-            TotalTimeStamp = CurrentAnimation.TotalAnimationTime;
+            PlaybackTime = 0;
+            CurrentAnimation.ResetClip();
             isPlaying = true;
             OnAnimationEnter?.Invoke(CurrentAnimation);
         }
@@ -92,9 +90,8 @@ namespace TRexGame.Engine.Animation
         public void Stop()
         {
             isPlaying = false;
-            CurrentTimeStamp = 0;
-            CurrentAnimation.CurrentFrameIndex = 0;
-            TotalTimeStamp = CurrentAnimation.TotalAnimationTime;
+            PlaybackTime = 0;
+            CurrentAnimation.ResetClip();
             OnAnimationExit?.Invoke(CurrentAnimation);
             CurrentAnimation = null;
         }

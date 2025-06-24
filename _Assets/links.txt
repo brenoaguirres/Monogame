@@ -1,0 +1,1 @@
+https://github.com/MonoGame/MonoGame.Samples/tree/3.8.4

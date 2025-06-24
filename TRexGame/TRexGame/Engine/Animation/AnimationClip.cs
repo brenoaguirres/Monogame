@@ -34,7 +34,7 @@ namespace TRexGame.Engine.Animation
         }
         public bool LoopAnimation { get => _loopAnimation; set => _loopAnimation = value; }
         public float AnimationSpeed => _animationSpeed;
-        public float TotalAnimationTime { get; private set; }
+        public float ClipDuration { get; private set; }
         public float TotalFrameTime { get; private set; }
         public int CurrentFrameIndex { get => _currentFrameIndex; set => _currentFrameIndex = value; }
         #endregion
@@ -52,7 +52,7 @@ namespace TRexGame.Engine.Animation
                 timestamp += TotalFrameTime;
             }
 
-            TotalAnimationTime = timestamp;
+            ClipDuration = timestamp;
         }
         #endregion
 
@@ -72,6 +72,10 @@ namespace TRexGame.Engine.Animation
         {
             if (_frames[_currentFrameIndex].DispatchEvent)
                 _frames[_currentFrameIndex].OnFrame?.Invoke(_frames[_currentFrameIndex]);
+        }
+        public void ResetClip()
+        {
+            CurrentFrameIndex = 0;
         }
         #endregion
     }

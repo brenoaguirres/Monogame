@@ -1,14 +1,17 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System;
+using System.Collections.Generic;
+using System.Linq;
 using TRexGame.Engine.Entities;
 using TRexGame.Engine.Graphics;
 using TRexGame.Engine.Resources;
+using TRexGame.GameEntities.TRex.TRexStates;
 
 namespace TRexGame.GameEntities.TRex
 {
     #region ENUM
-    public enum TRexState
+    public enum ETRexState
     {
         IDLE,
         RUN,
@@ -52,7 +55,7 @@ namespace TRexGame.GameEntities.TRex
         #region PROPERTIES
         public Sprite Sprite { get; set; }
         public TRexAnimator Animator { get; private set; }
-        public TRexState State { get; private set; }
+        public TRexStateMachine StateMachine { get; private set; }
 
         public float Speed { get; private set; }
         public bool IsAlive { get; private set; }
@@ -66,20 +69,27 @@ namespace TRexGame.GameEntities.TRex
         public Layer Layer { get; set; }
         public Vector2 Position { get; set; }
 
+        public void Update(GameTime gameTime)
+        {
+            StateMachine.UpdateStateMachine();
+            Animator.Update(gameTime);
+        }
+        #endregion
+
+        #region IGameDrawable INTERFACE
+        // Implement Sprite[] rendering, if sprite.Length == 1 call normal sprite.draw, else call sprite.draw(Sprite[])
+        // Implement Animator logic for stacking sprites
         public void Draw(SpriteBatch spriteBatch, GameTime gameTime)
         {
             Sprite.Draw(spriteBatch, Position);
         }
+        #endregion
 
-        public void Update(GameTime gameTime)
-        {
-            Animator.Update(gameTime);
-        }
 
-        public void Awake()
+        #region PRIVATE METHODS
+        private void Awake()
         {
             Animator = new(_gameResources.TexSpritesheet, this);
-            State = TRexState.IDLE;
             Position = new(
                     TREX_START_POS_X,
                     _screenHeight - TREX_START_POS_Y - Sprite.RectTransform.Height
@@ -87,6 +97,8 @@ namespace TRexGame.GameEntities.TRex
 
             Speed = 10;
             IsAlive = true;
+
+            StateMachine = new TRexStateMachine();
         }
         #endregion
     }

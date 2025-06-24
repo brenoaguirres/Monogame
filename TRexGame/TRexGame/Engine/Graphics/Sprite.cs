@@ -25,6 +25,7 @@ namespace TRexGame.Engine.Graphics
         #endregion
 
         #region PUBLIC METHODS
+        // Pass this to SpriteRenderer script to implement Sprite[] rendering
         public void Draw(SpriteBatch spriteBatch, Vector2 Position)
         {
             spriteBatch.Draw(
