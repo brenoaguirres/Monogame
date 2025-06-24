@@ -2,6 +2,6 @@
 {
     public class JumpState : TRexState
     {
-        public JumpState(ETRexState key) : base(key) { }
+        public JumpState(ETRexState key, TRex context) : base(key, context) { }
     }
 }

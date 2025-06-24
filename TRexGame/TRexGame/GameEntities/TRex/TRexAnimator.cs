@@ -20,10 +20,15 @@ namespace TRexGame.GameEntities.TRex
         private bool _defaultIdle = true;
         private float _idleReset = 2f;
         private float _idleTimer = 0f;
+        private ETRexState _state;
+        #endregion
+
+        #region PROPERTIES
+        public ETRexState State { get => _state; set => _state = value; }
         #endregion
 
         #region PRIVATE METHODS
-        public void UpdateIdleState(GameTime gameTime, TRexGraphics graphics)
+        public void AnimateIdleState(GameTime gameTime, TRexGraphics graphics)
         {
             if (_idleTimer <= 0)
             {
@@ -45,6 +50,22 @@ namespace TRexGame.GameEntities.TRex
                 _idleTimer -= (float)gameTime.ElapsedGameTime.TotalSeconds;
             }
         }
+        public void AnimateRunState(GameTime gameTime, TRexGraphics graphics)
+        {
+            throw new NotImplementedException();
+        }
+        public void AnimateJumpState(GameTime gameTime, TRexGraphics graphics)
+        {
+            throw new NotImplementedException();
+        }
+        public void AnimateDuckState(GameTime gameTime, TRexGraphics graphics)
+        {
+            throw new NotImplementedException();
+        }
+        public void AnimateFallState(GameTime gameTime, TRexGraphics graphics)
+        {
+            throw new NotImplementedException();
+        }
         #endregion
 
         #region PUBLIC METHODS
@@ -52,7 +73,25 @@ namespace TRexGame.GameEntities.TRex
         {
             TRexGraphics graphics = Graphics as TRexGraphics;
 
-            UpdateIdleState(gameTime, graphics);
+            switch (State)
+            {
+                default:
+                case ETRexState.IDLE:
+                    AnimateIdleState(gameTime, graphics);
+                    break;
+                case ETRexState.RUN:
+                    AnimateRunState(gameTime, graphics);
+                    break;
+                case ETRexState.JUMP:
+                    AnimateJumpState(gameTime, graphics);
+                    break;
+                case ETRexState.DUCK:
+                    AnimateDuckState(gameTime, graphics);
+                    break;
+                case ETRexState.FALL:
+                    AnimateFallState(gameTime, graphics);
+                    break;
+            }
         }
         #endregion
     }

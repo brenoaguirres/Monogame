@@ -2,6 +2,6 @@
 {
     public class FallState : TRexState
     {
-        public FallState(ETRexState key) : base(key) { }
+        public FallState(ETRexState key, TRex context) : base(key, context) { }
     }
 }

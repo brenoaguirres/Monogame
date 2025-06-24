@@ -98,7 +98,7 @@ namespace TRexGame.GameEntities.TRex
             Speed = 10;
             IsAlive = true;
 
-            StateMachine = new TRexStateMachine();
+            StateMachine = new TRexStateMachine(this);
         }
         #endregion
     }

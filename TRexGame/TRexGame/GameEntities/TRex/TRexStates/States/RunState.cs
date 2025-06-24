@@ -2,6 +2,6 @@
 {
     public class RunState : TRexState
     {
-        public RunState(ETRexState key) : base(key) { }
+        public RunState(ETRexState key, TRex context) : base(key, context) { }
     }
 }

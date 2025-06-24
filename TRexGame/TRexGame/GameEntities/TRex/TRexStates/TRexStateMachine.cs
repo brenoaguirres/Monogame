@@ -8,14 +8,16 @@ namespace TRexGame.GameEntities.TRex.TRexStates
     public class TRexStateMachine
     {
         #region CONSTRUCTOR
-        public TRexStateMachine()
+        public TRexStateMachine(TRex trex)
         {
+            _context = trex;
             GenerateStates();
             SwitchStates(ETRexState.IDLE);
         }
         #endregion
 
         #region FIELDS
+        private TRex _context;
         private Dictionary<ETRexState, TRexState> _states = new();
         #endregion
 
@@ -26,11 +28,11 @@ namespace TRexGame.GameEntities.TRex.TRexStates
         #region PRIVATE METHODS
         private void GenerateStates()
         {
-            _states.Add(ETRexState.IDLE, new IdleState(ETRexState.IDLE));
-            _states.Add(ETRexState.RUN, new RunState(ETRexState.RUN));
-            _states.Add(ETRexState.JUMP, new JumpState(ETRexState.JUMP));
-            _states.Add(ETRexState.DUCK, new DuckState(ETRexState.DUCK));
-            _states.Add(ETRexState.FALL, new FallState(ETRexState.FALL));
+            _states.Add(ETRexState.IDLE, new IdleState(ETRexState.IDLE, _context));
+            _states.Add(ETRexState.RUN, new RunState(ETRexState.RUN, _context));
+            _states.Add(ETRexState.JUMP, new JumpState(ETRexState.JUMP, _context));
+            _states.Add(ETRexState.DUCK, new DuckState(ETRexState.DUCK, _context));
+            _states.Add(ETRexState.FALL, new FallState(ETRexState.FALL, _context));
         }
         #endregion
 

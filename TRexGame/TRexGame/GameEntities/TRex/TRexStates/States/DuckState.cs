@@ -2,6 +2,6 @@
 {
     public class DuckState : TRexState
     {
-        public DuckState(ETRexState key) : base(key) { }
+        public DuckState(ETRexState key, TRex context) : base(key, context) { }
     }
 }

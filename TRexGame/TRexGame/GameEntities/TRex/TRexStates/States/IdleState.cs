@@ -2,6 +2,16 @@
 {
     public class IdleState : TRexState
     {
-        public IdleState(ETRexState key) : base(key) { }
+        #region CONSTRUCTOR
+        public IdleState(ETRexState key, TRex context) : base(key, context) { }
+        #endregion
+
+        #region STATE PATTERN
+        public override void Enter()
+        {
+            base.Enter();
+            _context.Animator.State = StateKey;
+        }
+        #endregion
     }
 }
