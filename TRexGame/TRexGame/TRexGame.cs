@@ -50,6 +50,7 @@ namespace TRexGame
             _gameResources.LoadResourcePack(Content);
 
             _tRex = new(_gameResources, WINDOW_W, WINDOW_H);
+            _tRex.Awake();
         }
 
         protected override void Update(GameTime gameTime)

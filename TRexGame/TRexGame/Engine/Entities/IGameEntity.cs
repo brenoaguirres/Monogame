@@ -16,6 +16,7 @@ namespace TRexGame.Engine.Entities
         #endregion
 
         #region PUBLIC METHODS
+        void Awake();
         void Update(GameTime gameTime);
         #endregion
     }

@@ -17,10 +17,16 @@ namespace TRexGame.GameEntities.TRex
         #endregion
 
         #region FIELDS
+        private ETRexState _state;
+
+        // idle
         private bool _defaultIdle = true;
         private float _idleReset = 2f;
         private float _idleTimer = 0f;
-        private ETRexState _state;
+
+        // jump
+        private bool _jumpStart = false;
+
         #endregion
 
         #region PROPERTIES
@@ -56,7 +62,12 @@ namespace TRexGame.GameEntities.TRex
         }
         public void AnimateJumpState(GameTime gameTime, TRexGraphics graphics)
         {
-            throw new NotImplementedException();
+            if (!_jumpStart)
+            {
+                BeginJumpAnimation(gameTime, graphics);
+                return;
+            }
+            ContinueJumpAnimation(gameTime, graphics);
         }
         public void AnimateDuckState(GameTime gameTime, TRexGraphics graphics)
         {
@@ -64,7 +75,22 @@ namespace TRexGame.GameEntities.TRex
         }
         public void AnimateFallState(GameTime gameTime, TRexGraphics graphics)
         {
-            throw new NotImplementedException();
+            Play(graphics.FallAnimation);
+            _jumpStart = false;
+        }
+        #endregion
+
+        #region ANIMATION HELPERS
+        public void BeginJumpAnimation(GameTime gameTime, TRexGraphics graphics)
+        {
+            _jumpStart = true;
+            Play(graphics.BeginJumpAnimation);
+        }
+
+        public void ContinueJumpAnimation(GameTime gameTime, TRexGraphics graphics)
+        {
+            if (isPlaying && CurrentAnimation != graphics.JumpAnimation) return;
+            Play(graphics.JumpAnimation);
         }
         #endregion
 

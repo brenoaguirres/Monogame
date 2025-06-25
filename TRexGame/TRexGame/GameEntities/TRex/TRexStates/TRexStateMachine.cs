@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using Microsoft.Xna.Framework;
 using TRexGame.GameEntities.TRex.TRexStates.States;
 
 namespace TRexGame.GameEntities.TRex.TRexStates
@@ -45,7 +46,7 @@ namespace TRexGame.GameEntities.TRex.TRexStates
             CurrentState.Enter();
 
         }
-        public void UpdateStateMachine()
+        public void UpdateStateMachine(GameTime gameTime)
         {
             ETRexState state = CurrentState.CheckTransitions();
             if (state != CurrentState.StateKey)

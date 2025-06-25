@@ -28,6 +28,7 @@ namespace TRexGame.Engine.Animation
         {
             get => _frames[_currentFrameIndex].Sprite;
         }
+        public string Name { get; set; }
         public float CurrentFrameTimestamp
         {
             get => _frames[_currentFrameIndex].TimeStamp;

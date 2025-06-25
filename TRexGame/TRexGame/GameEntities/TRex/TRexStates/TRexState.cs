@@ -5,6 +5,7 @@
         #region CONSTRUCTOR
         public TRexState(ETRexState key, TRex context)
         {
+            _context = context;
             StateKey = key;
         }
         #endregion

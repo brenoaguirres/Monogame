@@ -3,40 +3,16 @@
   "WorkspaceRootPath": "C:\\Users\\Breno\\Documents\\GitHub\\Monogame\\TRexGame\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{308BE2A6-DE31-4B9F-8248-7AF26CCFEE3B}|TRexGame\\TRexGame.csproj|c:\\users\\breno\\documents\\github\\monogame\\trexgame\\trexgame\\gameentities\\trex\\trexstates\\trexstatemachine.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{308BE2A6-DE31-4B9F-8248-7AF26CCFEE3B}|TRexGame\\TRexGame.csproj|solutionrelative:trexgame\\gameentities\\trex\\trexstates\\trexstatemachine.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{308BE2A6-DE31-4B9F-8248-7AF26CCFEE3B}|TRexGame\\TRexGame.csproj|c:\\users\\breno\\documents\\github\\monogame\\trexgame\\trexgame\\gameentities\\trex\\trex.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{308BE2A6-DE31-4B9F-8248-7AF26CCFEE3B}|TRexGame\\TRexGame.csproj|solutionrelative:trexgame\\gameentities\\trex\\trex.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{308BE2A6-DE31-4B9F-8248-7AF26CCFEE3B}|TRexGame\\TRexGame.csproj|c:\\users\\breno\\documents\\github\\monogame\\trexgame\\trexgame\\gameentities\\trex\\trexanimator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{308BE2A6-DE31-4B9F-8248-7AF26CCFEE3B}|TRexGame\\TRexGame.csproj|solutionrelative:trexgame\\gameentities\\trex\\trexanimator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{308BE2A6-DE31-4B9F-8248-7AF26CCFEE3B}|TRexGame\\TRexGame.csproj|c:\\users\\breno\\documents\\github\\monogame\\trexgame\\trexgame\\gameentities\\trex\\trexstates\\states\\idlestate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{308BE2A6-DE31-4B9F-8248-7AF26CCFEE3B}|TRexGame\\TRexGame.csproj|solutionrelative:trexgame\\gameentities\\trex\\trexstates\\states\\idlestate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{308BE2A6-DE31-4B9F-8248-7AF26CCFEE3B}|TRexGame\\TRexGame.csproj|c:\\users\\breno\\documents\\github\\monogame\\trexgame\\trexgame\\gameentities\\trex\\trexstates\\trexstate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{308BE2A6-DE31-4B9F-8248-7AF26CCFEE3B}|TRexGame\\TRexGame.csproj|solutionrelative:trexgame\\gameentities\\trex\\trexstates\\trexstate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{308BE2A6-DE31-4B9F-8248-7AF26CCFEE3B}|TRexGame\\TRexGame.csproj|c:\\users\\breno\\documents\\github\\monogame\\trexgame\\trexgame\\gameentities\\trex\\trexstates\\states\\duckstate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{308BE2A6-DE31-4B9F-8248-7AF26CCFEE3B}|TRexGame\\TRexGame.csproj|solutionrelative:trexgame\\gameentities\\trex\\trexstates\\states\\duckstate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{308BE2A6-DE31-4B9F-8248-7AF26CCFEE3B}|TRexGame\\TRexGame.csproj|c:\\users\\breno\\documents\\github\\monogame\\trexgame\\trexgame\\gameentities\\trex\\trexstates\\states\\runstate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{308BE2A6-DE31-4B9F-8248-7AF26CCFEE3B}|TRexGame\\TRexGame.csproj|solutionrelative:trexgame\\gameentities\\trex\\trexstates\\states\\runstate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{308BE2A6-DE31-4B9F-8248-7AF26CCFEE3B}|TRexGame\\TRexGame.csproj|c:\\users\\breno\\documents\\github\\monogame\\trexgame\\trexgame\\engine\\animation\\animator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{308BE2A6-DE31-4B9F-8248-7AF26CCFEE3B}|TRexGame\\TRexGame.csproj|solutionrelative:trexgame\\engine\\animation\\animator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{308BE2A6-DE31-4B9F-8248-7AF26CCFEE3B}|TRexGame\\TRexGame.csproj|c:\\users\\breno\\documents\\github\\monogame\\trexgame\\trexgame\\gameentities\\trex\\trexstates\\states\\jumpstate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{308BE2A6-DE31-4B9F-8248-7AF26CCFEE3B}|TRexGame\\TRexGame.csproj|solutionrelative:trexgame\\gameentities\\trex\\trexstates\\states\\jumpstate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{308BE2A6-DE31-4B9F-8248-7AF26CCFEE3B}|TRexGame\\TRexGame.csproj|c:\\users\\breno\\documents\\github\\monogame\\trexgame\\trexgame\\gameentities\\trex\\trexstates\\states\\fallstate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{308BE2A6-DE31-4B9F-8248-7AF26CCFEE3B}|TRexGame\\TRexGame.csproj|solutionrelative:trexgame\\gameentities\\trex\\trexstates\\states\\fallstate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -46,115 +22,45 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 8,
+          "SelectedChildIndex": 0,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "RunState.cs",
-              "DocumentMoniker": "C:\\Users\\Breno\\Documents\\GitHub\\Monogame\\TRexGame\\TRexGame\\GameEntities\\TRex\\TRexStates\\States\\RunState.cs",
-              "RelativeDocumentMoniker": "TRexGame\\GameEntities\\TRex\\TRexStates\\States\\RunState.cs",
-              "ToolTip": "C:\\Users\\Breno\\Documents\\GitHub\\Monogame\\TRexGame\\TRexGame\\GameEntities\\TRex\\TRexStates\\States\\RunState.cs",
-              "RelativeToolTip": "TRexGame\\GameEntities\\TRex\\TRexStates\\States\\RunState.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-24T20:58:43.418Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "JumpState.cs",
-              "DocumentMoniker": "C:\\Users\\Breno\\Documents\\GitHub\\Monogame\\TRexGame\\TRexGame\\GameEntities\\TRex\\TRexStates\\States\\JumpState.cs",
-              "RelativeDocumentMoniker": "TRexGame\\GameEntities\\TRex\\TRexStates\\States\\JumpState.cs",
-              "ToolTip": "C:\\Users\\Breno\\Documents\\GitHub\\Monogame\\TRexGame\\TRexGame\\GameEntities\\TRex\\TRexStates\\States\\JumpState.cs",
-              "RelativeToolTip": "TRexGame\\GameEntities\\TRex\\TRexStates\\States\\JumpState.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAABLAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-24T20:58:39.459Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "IdleState.cs",
-              "DocumentMoniker": "C:\\Users\\Breno\\Documents\\GitHub\\Monogame\\TRexGame\\TRexGame\\GameEntities\\TRex\\TRexStates\\States\\IdleState.cs",
-              "RelativeDocumentMoniker": "TRexGame\\GameEntities\\TRex\\TRexStates\\States\\IdleState.cs",
-              "ToolTip": "C:\\Users\\Breno\\Documents\\GitHub\\Monogame\\TRexGame\\TRexGame\\GameEntities\\TRex\\TRexStates\\States\\IdleState.cs",
-              "RelativeToolTip": "TRexGame\\GameEntities\\TRex\\TRexStates\\States\\IdleState.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAqwAwAAAAMAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-24T20:58:35.445Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 8,
-              "Title": "FallState.cs",
-              "DocumentMoniker": "C:\\Users\\Breno\\Documents\\GitHub\\Monogame\\TRexGame\\TRexGame\\GameEntities\\TRex\\TRexStates\\States\\FallState.cs",
-              "RelativeDocumentMoniker": "TRexGame\\GameEntities\\TRex\\TRexStates\\States\\FallState.cs",
-              "ToolTip": "C:\\Users\\Breno\\Documents\\GitHub\\Monogame\\TRexGame\\TRexGame\\GameEntities\\TRex\\TRexStates\\States\\FallState.cs",
-              "RelativeToolTip": "TRexGame\\GameEntities\\TRex\\TRexStates\\States\\FallState.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAABLAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-24T20:58:29.229Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "DuckState.cs",
-              "DocumentMoniker": "C:\\Users\\Breno\\Documents\\GitHub\\Monogame\\TRexGame\\TRexGame\\GameEntities\\TRex\\TRexStates\\States\\DuckState.cs",
-              "RelativeDocumentMoniker": "TRexGame\\GameEntities\\TRex\\TRexStates\\States\\DuckState.cs",
-              "ToolTip": "C:\\Users\\Breno\\Documents\\GitHub\\Monogame\\TRexGame\\TRexGame\\GameEntities\\TRex\\TRexStates\\States\\DuckState.cs",
-              "RelativeToolTip": "TRexGame\\GameEntities\\TRex\\TRexStates\\States\\DuckState.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-24T20:58:07.86Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "TRexState.cs",
-              "DocumentMoniker": "C:\\Users\\Breno\\Documents\\GitHub\\Monogame\\TRexGame\\TRexGame\\GameEntities\\TRex\\TRexStates\\TRexState.cs",
-              "RelativeDocumentMoniker": "TRexGame\\GameEntities\\TRex\\TRexStates\\TRexState.cs",
-              "ToolTip": "C:\\Users\\Breno\\Documents\\GitHub\\Monogame\\TRexGame\\TRexGame\\GameEntities\\TRex\\TRexStates\\TRexState.cs",
-              "RelativeToolTip": "TRexGame\\GameEntities\\TRex\\TRexStates\\TRexState.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAqwAcAAAAbAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-24T20:56:17.317Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 0,
               "Title": "TRexAnimator.cs",
               "DocumentMoniker": "C:\\Users\\Breno\\Documents\\GitHub\\Monogame\\TRexGame\\TRexGame\\GameEntities\\TRex\\TRexAnimator.cs",
               "RelativeDocumentMoniker": "TRexGame\\GameEntities\\TRex\\TRexAnimator.cs",
               "ToolTip": "C:\\Users\\Breno\\Documents\\GitHub\\Monogame\\TRexGame\\TRexGame\\GameEntities\\TRex\\TRexAnimator.cs",
               "RelativeToolTip": "TRexGame\\GameEntities\\TRex\\TRexAnimator.cs",
-              "ViewState": "AgIAABwAAAAAAAAAAAAgwBEAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAD8AAAAAAAAAAAAYwFUAAAAeAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-24T20:44:19.939Z"
+              "WhenOpened": "2025-06-25T21:27:13.974Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "JumpState.cs",
+              "DocumentMoniker": "C:\\Users\\Breno\\Documents\\GitHub\\Monogame\\TRexGame\\TRexGame\\GameEntities\\TRex\\TRexStates\\States\\JumpState.cs",
+              "RelativeDocumentMoniker": "TRexGame\\GameEntities\\TRex\\TRexStates\\States\\JumpState.cs",
+              "ToolTip": "C:\\Users\\Breno\\Documents\\GitHub\\Monogame\\TRexGame\\TRexGame\\GameEntities\\TRex\\TRexStates\\States\\JumpState.cs",
+              "RelativeToolTip": "TRexGame\\GameEntities\\TRex\\TRexStates\\States\\JumpState.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-25T21:26:56.522Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "TRex.cs",
-              "DocumentMoniker": "C:\\Users\\Breno\\Documents\\GitHub\\Monogame\\TRexGame\\TRexGame\\GameEntities\\TRex\\TRex.cs",
-              "RelativeDocumentMoniker": "TRexGame\\GameEntities\\TRex\\TRex.cs",
-              "ToolTip": "C:\\Users\\Breno\\Documents\\GitHub\\Monogame\\TRexGame\\TRexGame\\GameEntities\\TRex\\TRex.cs",
-              "RelativeToolTip": "TRexGame\\GameEntities\\TRex\\TRex.cs",
-              "ViewState": "AgIAAEcAAAAAAAAAAAAqwGQAAAAvAAAAAAAAAA==",
+              "Title": "Animator.cs",
+              "DocumentMoniker": "C:\\Users\\Breno\\Documents\\GitHub\\Monogame\\TRexGame\\TRexGame\\Engine\\Animation\\Animator.cs",
+              "RelativeDocumentMoniker": "TRexGame\\Engine\\Animation\\Animator.cs",
+              "ToolTip": "C:\\Users\\Breno\\Documents\\GitHub\\Monogame\\TRexGame\\TRexGame\\Engine\\Animation\\Animator.cs",
+              "RelativeToolTip": "TRexGame\\Engine\\Animation\\Animator.cs",
+              "ViewState": "AgIAAA4AAAAAAAAAAAAmwEUAAAAQAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-24T20:23:46.995Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "TRexStateMachine.cs",
-              "DocumentMoniker": "C:\\Users\\Breno\\Documents\\GitHub\\Monogame\\TRexGame\\TRexGame\\GameEntities\\TRex\\TRexStates\\TRexStateMachine.cs",
-              "RelativeDocumentMoniker": "TRexGame\\GameEntities\\TRex\\TRexStates\\TRexStateMachine.cs",
-              "ToolTip": "C:\\Users\\Breno\\Documents\\GitHub\\Monogame\\TRexGame\\TRexGame\\GameEntities\\TRex\\TRexStates\\TRexStateMachine.cs",
-              "RelativeToolTip": "TRexGame\\GameEntities\\TRex\\TRexStates\\TRexStateMachine.cs",
-              "ViewState": "AgIAACQAAAAAAAAAAAAowAoAAAAPAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-24T20:23:30.989Z",
+              "WhenOpened": "2025-06-25T21:24:47.961Z",
               "EditorCaption": ""
             }
           ]

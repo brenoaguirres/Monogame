@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using TRexGame.Engine.Entities;
@@ -49,7 +50,7 @@ namespace TRexGame.Engine.Animation
         {
 
         }
-        public void Update(GameTime gameTime)
+        public void UpdateAnimator(GameTime gameTime)
         {
             UpdateStates(gameTime);
 
@@ -74,7 +75,9 @@ namespace TRexGame.Engine.Animation
         }
 
         public void Play(AnimationClip animationClip)
-        {
+        {   
+            Debug.WriteLine(animationClip.Name);
+
             CurrentAnimation = animationClip;
             PlaybackTime = 0;
             CurrentAnimation.ResetClip();

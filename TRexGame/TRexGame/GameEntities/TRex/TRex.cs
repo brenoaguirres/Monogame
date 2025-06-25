@@ -1,11 +1,11 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System;
-using System.Collections.Generic;
-using System.Linq;
+using TRexGame.Engine.Audio;
 using TRexGame.Engine.Entities;
 using TRexGame.Engine.Graphics;
 using TRexGame.Engine.Resources;
+using TRexGame.GameEntities.TRex.Input;
 using TRexGame.GameEntities.TRex.TRexStates;
 
 namespace TRexGame.GameEntities.TRex
@@ -41,8 +41,6 @@ namespace TRexGame.GameEntities.TRex
             _gameResources = gameResources;
             _screenWidth = SCR_WID;
             _screenHeight = SCR_HEI;
-
-            Awake();
         }
         #endregion
 
@@ -53,9 +51,18 @@ namespace TRexGame.GameEntities.TRex
         #endregion
 
         #region PROPERTIES
+        // GFX
         public Sprite Sprite { get; set; }
         public TRexAnimator Animator { get; private set; }
+
+        // State
         public TRexStateMachine StateMachine { get; private set; }
+
+        // Audio
+        public TRexAudioSource AudioSource { get; private set; }
+
+        // Input
+        public TRexInput Input { get; private set; }
 
         public float Speed { get; private set; }
         public bool IsAlive { get; private set; }
@@ -68,11 +75,28 @@ namespace TRexGame.GameEntities.TRex
         public string Tag { get; set; }
         public Layer Layer { get; set; }
         public Vector2 Position { get; set; }
+        public void Awake()
+        {
+            Animator = new(_gameResources.TexSpritesheet, this);
+            Position = new(
+                    TREX_START_POS_X,
+                    _screenHeight - TREX_START_POS_Y - Sprite.RectTransform.Height
+                );
 
+            AudioSource = new(new TRexAudio(_gameResources));
+            Input = new();
+
+            Speed = 10;
+            IsAlive = true;
+
+            StateMachine = new TRexStateMachine(this);
+        }
         public void Update(GameTime gameTime)
         {
-            StateMachine.UpdateStateMachine();
-            Animator.Update(gameTime);
+            Input.UpdateInputs(gameTime);
+            StateMachine.UpdateStateMachine(gameTime);
+            Animator.UpdateAnimator(gameTime);
+            AudioSource.UpdateAudioSource(gameTime);
         }
         #endregion
 
@@ -82,23 +106,6 @@ namespace TRexGame.GameEntities.TRex
         public void Draw(SpriteBatch spriteBatch, GameTime gameTime)
         {
             Sprite.Draw(spriteBatch, Position);
-        }
-        #endregion
-
-
-        #region PRIVATE METHODS
-        private void Awake()
-        {
-            Animator = new(_gameResources.TexSpritesheet, this);
-            Position = new(
-                    TREX_START_POS_X,
-                    _screenHeight - TREX_START_POS_Y - Sprite.RectTransform.Height
-                );
-
-            Speed = 10;
-            IsAlive = true;
-
-            StateMachine = new TRexStateMachine(this);
         }
         #endregion
     }
