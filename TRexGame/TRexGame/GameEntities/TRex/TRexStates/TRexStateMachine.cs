@@ -55,7 +55,7 @@ namespace TRexGame.GameEntities.TRex.TRexStates
                 return;
             }
             
-            CurrentState.Update();
+            CurrentState.Update(gameTime);
         }
         #endregion
     }

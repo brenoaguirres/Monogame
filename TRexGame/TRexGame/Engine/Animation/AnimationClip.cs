@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Reflection.Metadata.Ecma335;
 using TRexGame.Engine.Graphics;
@@ -8,9 +9,12 @@ namespace TRexGame.Engine.Animation
     public class AnimationClip
     {
         #region CONSTRUCTOR
-        public AnimationClip(Sprite[] sprites)
+        public AnimationClip(string name, bool loop, float speed, Sprite[] sprites)
         {
             _sprites = sprites;
+            Name = name;
+            _loopAnimation = loop;
+            _animationSpeed = speed;
             GenerateFrames();
         }
         #endregion
@@ -51,9 +55,8 @@ namespace TRexGame.Engine.Animation
             {
                 _frames.Add(new Frame(sprite, timestamp));
                 timestamp += TotalFrameTime;
+                ClipDuration += TotalFrameTime;
             }
-
-            ClipDuration = timestamp;
         }
         #endregion
 

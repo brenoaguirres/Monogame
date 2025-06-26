@@ -1,7 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System;
-using TRexGame.Engine.Audio;
 using TRexGame.Engine.Entities;
 using TRexGame.Engine.Graphics;
 using TRexGame.Engine.Resources;
@@ -21,7 +20,7 @@ namespace TRexGame.GameEntities.TRex
     }
     #endregion
 
-    public class TRex : IGameEntity, IGameDrawable
+    public class TRex : IGameEntity, IGameDrawable, IGamePhysicsBody
     {
         #region CONSTANTS
         private const int TREX_START_POS_X = 1;
@@ -37,6 +36,7 @@ namespace TRexGame.GameEntities.TRex
             Tag = "";
             Layer = Layer.Player;
             Position = new(0, 0);
+            Velocity = new(0, 0);
 
             _gameResources = gameResources;
             _screenWidth = SCR_WID;
@@ -64,8 +64,11 @@ namespace TRexGame.GameEntities.TRex
         // Input
         public TRexInput Input { get; private set; }
 
+        // Game
         public float Speed { get; private set; }
+        public float JumpForce { get; private set; }
         public bool IsAlive { get; private set; }
+        public Vector2 StartingPosition { get; private set; }
         #endregion
 
         #region IGameEntity INTERFACE
@@ -87,7 +90,9 @@ namespace TRexGame.GameEntities.TRex
             Input = new();
 
             Speed = 10;
+            JumpForce = -60;
             IsAlive = true;
+            StartingPosition = Position;
 
             StateMachine = new TRexStateMachine(this);
         }
@@ -107,6 +112,10 @@ namespace TRexGame.GameEntities.TRex
         {
             Sprite.Draw(spriteBatch, Position);
         }
+
+        #region IPhysicsBody INTERFACE
+        public Vector2 Velocity { get; set; }
+        #endregion
         #endregion
     }
 }

@@ -30,11 +30,22 @@ namespace TRexGame.GameEntities.TRex
         #endregion
 
         #region PROPERTIES
-        public ETRexState State { get => _state; set => _state = value; }
+        public ETRexState State 
+        { 
+            get => _state; 
+            set
+            {
+                if (_state != value)
+                {
+                    StateChange(value);
+                }
+                _state = value;
+            }
+        }
         #endregion
 
         #region PRIVATE METHODS
-        public void AnimateIdleState(GameTime gameTime, TRexGraphics graphics)
+        private void AnimateIdleState(GameTime gameTime, TRexGraphics graphics)
         {
             if (_idleTimer <= 0)
             {
@@ -56,11 +67,11 @@ namespace TRexGame.GameEntities.TRex
                 _idleTimer -= (float)gameTime.ElapsedGameTime.TotalSeconds;
             }
         }
-        public void AnimateRunState(GameTime gameTime, TRexGraphics graphics)
+        private void AnimateRunState(GameTime gameTime, TRexGraphics graphics)
         {
             throw new NotImplementedException();
         }
-        public void AnimateJumpState(GameTime gameTime, TRexGraphics graphics)
+        private void AnimateJumpState(GameTime gameTime, TRexGraphics graphics)
         {
             if (!_jumpStart)
             {
@@ -69,11 +80,11 @@ namespace TRexGame.GameEntities.TRex
             }
             ContinueJumpAnimation(gameTime, graphics);
         }
-        public void AnimateDuckState(GameTime gameTime, TRexGraphics graphics)
+        private void AnimateDuckState(GameTime gameTime, TRexGraphics graphics)
         {
             throw new NotImplementedException();
         }
-        public void AnimateFallState(GameTime gameTime, TRexGraphics graphics)
+        private void AnimateFallState(GameTime gameTime, TRexGraphics graphics)
         {
             Play(graphics.FallAnimation);
             _jumpStart = false;
@@ -81,16 +92,37 @@ namespace TRexGame.GameEntities.TRex
         #endregion
 
         #region ANIMATION HELPERS
-        public void BeginJumpAnimation(GameTime gameTime, TRexGraphics graphics)
+        private void BeginJumpAnimation(GameTime gameTime, TRexGraphics graphics)
         {
             _jumpStart = true;
             Play(graphics.BeginJumpAnimation);
         }
 
-        public void ContinueJumpAnimation(GameTime gameTime, TRexGraphics graphics)
+        private void ContinueJumpAnimation(GameTime gameTime, TRexGraphics graphics)
         {
-            if (isPlaying && CurrentAnimation != graphics.JumpAnimation) return;
-            Play(graphics.JumpAnimation);
+            if (_jumpStart && !isPlaying)
+                Play(graphics.JumpAnimation);
+        }
+        #endregion
+
+        #region STATE CHANGE
+        private void StateChange(ETRexState state)
+        {
+            switch (state)
+            {
+                default:
+                case ETRexState.IDLE:
+                    _idleTimer = 0;
+                    break;
+                case ETRexState.RUN:
+                    break;
+                case ETRexState.JUMP:
+                    break;
+                case ETRexState.DUCK:
+                    break;
+                case ETRexState.FALL:
+                    break;
+            }
         }
         #endregion
 

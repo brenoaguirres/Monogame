@@ -26,13 +26,12 @@ namespace TRexGame.GameEntities.TRex
         private const int SPR_BEGINJUMP01_Y = 0;
 
         // jump sprites
-        private const int SPR_JUMP01_X = 892;
+        private const int SPR_JUMP01_X = 848;
         private const int SPR_JUMP01_Y = 0;
 
         // fall sprites
         private const int SPR_FALL01_X = 980;
         private const int SPR_FALL01_Y = 0;
-
         #endregion
 
         #region CONSTRUCTOR
@@ -62,25 +61,11 @@ namespace TRexGame.GameEntities.TRex
             };
 
             // anim init
-            IdleAnimation = new AnimationClip(_idleSprites);
-            IdleAnimation.LoopAnimation = true;
-            IdleAnimation.Name = "Idle";
-
-            BlinkAnimation = new AnimationClip(_blinkSprites);
-            BlinkAnimation.LoopAnimation = true;
-            BlinkAnimation.Name = "Blink";
-
-            BeginJumpAnimation = new AnimationClip(_jumpSprites);
-            BeginJumpAnimation.LoopAnimation = false;
-            BeginJumpAnimation.Name = "BeginJump";
-
-            JumpAnimation = new AnimationClip(_jumpSprites);
-            JumpAnimation.LoopAnimation = true;
-            JumpAnimation.Name = "Jump";
-
-            FallAnimation = new AnimationClip(_fallSprites);
-            FallAnimation.LoopAnimation = false;
-            FallAnimation.Name = "Fall";
+            IdleAnimation = new AnimationClip("Idle", true, 1, _idleSprites);
+            BlinkAnimation = new AnimationClip("Blink", true, 1, _blinkSprites);
+            BeginJumpAnimation = new AnimationClip("BeginJump", false, 1, _beginJumpSprites);
+            JumpAnimation = new AnimationClip("Jump", true, 1, _jumpSprites);
+            FallAnimation = new AnimationClip("Fall", false, 1, _fallSprites);
 
             DefaultAnimation = IdleAnimation;
         }
