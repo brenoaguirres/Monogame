@@ -1,6 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
 
-namespace TRexGame.Engine.Entities
+namespace TRexGame.Engine.Physics
 {
     public interface IGamePhysicsBody
     {

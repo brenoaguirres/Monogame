@@ -31,7 +31,7 @@ namespace TRexGame.GameEntities.TRex.TRexStates.States
 
             _context.AudioSource.JumpSFX();
 
-            _context.Velocity = new Vector2(_context.Velocity.X, _context.JumpForce * 10);
+            _context.Velocity = new Vector2(_context.Velocity.X, _context.JumpForce);
         }
 
         public override ETRexState CheckTransitions()

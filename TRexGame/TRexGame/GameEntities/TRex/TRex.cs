@@ -3,6 +3,7 @@ using Microsoft.Xna.Framework.Graphics;
 using System;
 using TRexGame.Engine.Entities;
 using TRexGame.Engine.Graphics;
+using TRexGame.Engine.Physics;
 using TRexGame.Engine.Resources;
 using TRexGame.GameEntities.TRex.Input;
 using TRexGame.GameEntities.TRex.TRexStates;
@@ -20,7 +21,7 @@ namespace TRexGame.GameEntities.TRex
     }
     #endregion
 
-    public class TRex : IGameEntity, IGameDrawable, IGamePhysicsBody
+    public class TRex : GameEntity, IGameDrawable, IGamePhysicsBody
     {
         #region CONSTANTS
         private const int TREX_START_POS_X = 1;
@@ -72,13 +73,7 @@ namespace TRexGame.GameEntities.TRex
         #endregion
 
         #region IGameEntity INTERFACE
-        public Guid Id { get; init; }
-        public string Name { get; set; }
-        public int DrawOrder { get; set; }
-        public string Tag { get; set; }
-        public Layer Layer { get; set; }
-        public Vector2 Position { get; set; }
-        public void Awake()
+        public override void Awake()
         {
             Animator = new(_gameResources.TexSpritesheet, this);
             Position = new(
@@ -90,13 +85,13 @@ namespace TRexGame.GameEntities.TRex
             Input = new();
 
             Speed = 10;
-            JumpForce = -60;
+            JumpForce = -600;
             IsAlive = true;
             StartingPosition = Position;
 
             StateMachine = new TRexStateMachine(this);
         }
-        public void Update(GameTime gameTime)
+        public override void Update(GameTime gameTime)
         {
             Input.UpdateInputs(gameTime);
             StateMachine.UpdateStateMachine(gameTime);
