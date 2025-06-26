@@ -29,13 +29,16 @@ namespace TRexGame.GameEntities.TRex
         #endregion
 
         #region CONSTRUCTOR
-        public TRex(GameResources gameResources, int SCR_WID, int SCR_HEI)
+        public TRex(
+            GameResources gameResources, 
+            int SCR_WID, 
+            int SCR_HEI,
+            string name = "TRex",
+            int draworder = 0,
+            string tag = "",
+            Layer layer = Layer.Player
+            ) : base(name, draworder, tag, layer)
         {
-            Id = new Guid();
-            Name = "TRex";
-            DrawOrder = 0;
-            Tag = "";
-            Layer = Layer.Player;
             Position = new(0, 0);
             Velocity = new(0, 0);
 
@@ -72,7 +75,7 @@ namespace TRexGame.GameEntities.TRex
         public Vector2 StartingPosition { get; private set; }
         #endregion
 
-        #region IGameEntity INTERFACE
+        #region GAME ENTITY CALLBACKS
         public override void Awake()
         {
             Animator = new(_gameResources.TexSpritesheet, this);
@@ -91,6 +94,7 @@ namespace TRexGame.GameEntities.TRex
 
             StateMachine = new TRexStateMachine(this);
         }
+        public override void Start() { }
         public override void Update(GameTime gameTime)
         {
             Input.UpdateInputs(gameTime);
@@ -98,6 +102,8 @@ namespace TRexGame.GameEntities.TRex
             Animator.UpdateAnimator(gameTime);
             AudioSource.UpdateAudioSource(gameTime);
         }
+
+        public override void OnDestroy() { }
         #endregion
 
         #region IGameDrawable INTERFACE

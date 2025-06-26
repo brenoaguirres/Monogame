@@ -7,6 +7,25 @@ namespace TRexGame.Engine.Entities
 {
     public abstract class GameEntity
     {
+        #region CONSTRUCTOR
+        public GameEntity(
+            string name = "", 
+            int draworder = 0, 
+            string tag = "", 
+            Layer layer = Layer.Default
+            )
+        {
+            Id = new Guid();
+            Name = name;
+            DrawOrder = draworder;
+            Tag = tag;
+            Layer = layer;
+            Position = new(0, 0);
+
+            EntityManager.Instance.Instantiate(this);
+        }
+        #endregion
+
         #region FIELDS
         protected List<GameComponent> GameComponents { get; set; }
         #endregion
@@ -14,6 +33,7 @@ namespace TRexGame.Engine.Entities
         #region PROPERTIES
         public Guid Id { get; init; }
         public string Name { get; set; }
+        public bool IsActive { get; set; }
         public int DrawOrder { get; set; }
         public string Tag { get; set; }
         public Layer Layer { get; set; }
@@ -33,7 +53,9 @@ namespace TRexGame.Engine.Entities
 
         #region PUBLIC METHODS
         public abstract void Awake();
+        public abstract void Start();
         public abstract void Update(GameTime gameTime);
+        public abstract void OnDestroy();
         #endregion
     }
 }

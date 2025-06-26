@@ -11,6 +11,7 @@ namespace TRexGame.GameEntities.TRex.Input
 
         #region PROPERTIES
         public bool JumpInput { get; private set; }
+        public bool CancelJumpInput { get; private set; }
         #endregion
 
         #region PUBLIC METHODS
@@ -25,6 +26,15 @@ namespace TRexGame.GameEntities.TRex.Input
             else
             {
                 JumpInput = false;
+            }
+
+            if (!_previousKBState.IsKeyDown(Keys.Down) && keyboardState.IsKeyDown(Keys.Down))
+            {
+                CancelJumpInput = true;
+            }
+            else
+            {
+                CancelJumpInput = false;
             }
 
             _previousKBState = keyboardState;

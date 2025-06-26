@@ -36,7 +36,7 @@ namespace TRexGame.GameEntities.TRex.TRexStates.States
 
         public override ETRexState CheckTransitions()
         {
-            if (_context.Velocity.Y >= 0)
+            if (_context.Velocity.Y >= 0 || _context.Input.CancelJumpInput)
                 return ETRexState.FALL;
 
             return StateKey;
