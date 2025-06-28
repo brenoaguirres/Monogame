@@ -1,7 +1,7 @@
-﻿using System;
-using Microsoft.Xna.Framework;
+﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using TRexGame.Engine.Entities;
 using TRexGame.Engine.Resources;
 using TRexGame.GameEntities.TRex;
 
@@ -50,7 +50,6 @@ namespace TRexGame
             _gameResources.LoadResourcePack(Content);
 
             _tRex = new(_gameResources, WINDOW_W, WINDOW_H);
-            _tRex.Awake();
         }
 
         protected override void Update(GameTime gameTime)
@@ -58,7 +57,10 @@ namespace TRexGame
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
                 Exit();
 
-            _tRex.Update(gameTime);
+            EntityManager.Instance.AwakeStage();
+            EntityManager.Instance.StartStage();
+            EntityManager.Instance.UpdateStage(gameTime);
+            EntityManager.Instance.CleanupStage();
 
             base.Update(gameTime);
         }
@@ -69,7 +71,7 @@ namespace TRexGame
 
             _spriteBatch.Begin();
 
-            _tRex.Draw(_spriteBatch, gameTime);
+            EntityManager.Instance.RenderEntityStage(_spriteBatch, gameTime);
 
             _spriteBatch.End();
 

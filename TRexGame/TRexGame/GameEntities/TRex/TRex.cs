@@ -102,7 +102,10 @@ namespace TRexGame.GameEntities.TRex
             Animator.UpdateAnimator(gameTime);
             AudioSource.UpdateAudioSource(gameTime);
         }
-
+        public override void OnRenderEntity(SpriteBatch spriteBatch, GameTime gameTime)
+        {
+            Draw(spriteBatch, gameTime);
+        }
         public override void OnDestroy() { }
         #endregion
 

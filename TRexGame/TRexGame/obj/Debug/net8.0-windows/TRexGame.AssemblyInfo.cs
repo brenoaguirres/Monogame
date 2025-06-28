@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("TRexGame")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+0e818e07f94aaebf5600859af4c527db0bb605ec")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+b06535e15105e0cef32994062d368717a4d1e98c")]
 [assembly: System.Reflection.AssemblyProductAttribute("TRexGame")]
 [assembly: System.Reflection.AssemblyTitleAttribute("TRexGame")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

@@ -1,7 +1,9 @@
 ﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using Entities = TRexGame.Engine.Entities;
 
 namespace TRexGame.Engine.Entities
 {
@@ -27,7 +29,7 @@ namespace TRexGame.Engine.Entities
         #endregion
 
         #region FIELDS
-        protected List<GameComponent> GameComponents { get; set; }
+        protected List<Entities.IGameComponent> GameComponents { get; set; }
         #endregion
 
         #region PROPERTIES
@@ -41,11 +43,11 @@ namespace TRexGame.Engine.Entities
         #endregion
 
         #region GAMEENTITY METHODS
-        public T GetComponent<T>() where T : GameComponent
+        public T GetComponent<T>() where T : Entities.IGameComponent
         {
             return (T)GameComponents.Find(x => x is T);
         }
-        public List<T> GetComponents<T>() where T : GameComponent
+        public List<T> GetComponents<T>() where T : Entities.IGameComponent
         {
             return GameComponents.OfType<T>().ToList();
         }
@@ -55,6 +57,7 @@ namespace TRexGame.Engine.Entities
         public abstract void Awake();
         public abstract void Start();
         public abstract void Update(GameTime gameTime);
+        public abstract void OnRenderEntity(SpriteBatch spriteBatch, GameTime gameTime);
         public abstract void OnDestroy();
         #endregion
     }
