@@ -5,14 +5,16 @@ using Microsoft.Xna.Framework.Graphics;
 using TRexGame.Engine.Entities;
 using TRexGame.Engine.Graphics;
 using TRexGame.GameEntities.TRex;
+using Entities = TRexGame.Engine.Entities;
 
 namespace TRexGame.Engine.Animation
 {
-    public abstract class Animator
+    public abstract class Animator : Entities.IGameComponent
     {
         #region CONSTRUCTOR
-        public Animator(IGameGraphics graphics, IGameDrawable drawable)
+        public Animator(GameEntity gameEntity, IGameGraphics graphics, IGameDrawable drawable)
         {
+            _myGameEntity = gameEntity;
             Graphics = graphics;
             CurrentAnimation = Graphics.DefaultAnimation;
             GameDrawable = drawable;
@@ -21,14 +23,18 @@ namespace TRexGame.Engine.Animation
         }
         #endregion
 
+        #region FIELDS
+        private GameEntity _myGameEntity;
+        #endregion
+
         #region PROPERTIES
+        public GameEntity MyGameEntity { get { return _myGameEntity; } set { _myGameEntity = value; } }
         public IGameGraphics Graphics { get; protected set; }
         public AnimationClip DefaultAnimation => Graphics.DefaultAnimation;
         public AnimationClip CurrentAnimation { get; protected set; }
         public IGameDrawable GameDrawable { get; protected set; }
 
-
-        public bool isPlaying = false;
+        public bool IsPlaying = false;
         public float PlaybackTime { get; protected set; }
         #endregion
 
@@ -54,7 +60,7 @@ namespace TRexGame.Engine.Animation
             UpdateStates(gameTime);
             ValidateDefaultAnimation();
 
-            if (isPlaying)
+            if (IsPlaying)
             {
                 if (PlaybackTime >= CurrentAnimation.ClipDuration)
                 {
@@ -85,14 +91,14 @@ namespace TRexGame.Engine.Animation
             CurrentAnimation = animationClip;
             PlaybackTime = 0;
             CurrentAnimation.ResetClip();
-            isPlaying = true;
+            IsPlaying = true;
             OnAnimationEnter?.Invoke(CurrentAnimation);
             GameDrawable.Sprite = CurrentAnimation.CurrentFrameSprite;
         }
 
         public void Pause()
         {
-            isPlaying = false;
+            IsPlaying = false;
         }
 
         public void Default()
@@ -105,7 +111,7 @@ namespace TRexGame.Engine.Animation
         {
             if (CurrentAnimation == null) return;
 
-            isPlaying = false;
+            IsPlaying = false;
             PlaybackTime = 0;
             CurrentAnimation.ResetClip();
             OnAnimationExit?.Invoke(CurrentAnimation);

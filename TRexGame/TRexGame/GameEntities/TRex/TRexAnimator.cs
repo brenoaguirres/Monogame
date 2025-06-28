@@ -11,7 +11,7 @@ namespace TRexGame.GameEntities.TRex
     public class TRexAnimator : Animator
     {
         #region CONSTRUCTOR
-        public TRexAnimator(Texture2D texture, IGameDrawable drawable) : base (new TRexGraphics(texture), drawable)
+        public TRexAnimator(GameEntity gameEntity, Texture2D texture, IGameDrawable drawable) : base (gameEntity, new TRexGraphics(texture), drawable)
         {
         }
         #endregion
@@ -100,7 +100,7 @@ namespace TRexGame.GameEntities.TRex
 
         private void ContinueJumpAnimation(GameTime gameTime, TRexGraphics graphics)
         {
-            if (_jumpStart && !isPlaying)
+            if (_jumpStart && !IsPlaying)
                 Play(graphics.JumpAnimation);
         }
         #endregion

@@ -28,27 +28,14 @@ namespace TRexGame.Engine.Graphics
         #region PUBLIC METHODS
         public void Draw(SpriteBatch spriteBatch, Vector2 Position)
         {
-            if (Sprite.Count <= 1)
-            {
-                spriteBatch.Draw(
-                    Sprite[0].Texture,
-                    Position,
-                    new Rectangle(Sprite[0].RectTransform.X, Sprite[0].RectTransform.Y,
-                    Sprite[0].RectTransform.Width, Sprite[0].RectTransform.Height),
-                    Sprite[0].TintColor
-                    );
-            }
-            else
-            {
-                foreach (var spr in Sprite)
+            foreach (var spr in Sprite)
                 spriteBatch.Draw(
                     spr.Texture,
                     Position,
-                    new Rectangle(spr.RectTransform.X, spr.RectTransform.Y, 
+                    new Rectangle((int)spr.RectTransform.Position.X, (int)spr.RectTransform.Position.Y,
                     spr.RectTransform.Width, spr.RectTransform.Height),
                     spr.TintColor
                     );
-            }
         }
         #endregion
     }

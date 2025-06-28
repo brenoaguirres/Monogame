@@ -1,15 +1,15 @@
-﻿using TRexGame.Engine.Entities;
+﻿using Microsoft.Xna.Framework;
+using TRexGame.Engine.Entities;
 
 namespace TRexGame.Engine.Graphics
 {
     public class RectTransform : Entities.IGameComponent
     {
         #region CONSTRUCTOR
-        public RectTransform(GameEntity gameEntity, int x, int y, int width, int height)
+        public RectTransform(GameEntity gameEntity, Vector2 position, int width, int height)
         {
             _myGameEntity = gameEntity;
-            X = x;
-            Y = y;
+            Position = position;
             Width = width;
             Height = height;
         }
@@ -21,8 +21,7 @@ namespace TRexGame.Engine.Graphics
 
         #region PROPERTIES
         public GameEntity MyGameEntity { get { return _myGameEntity; } set { _myGameEntity = value; } }
-        public int X { get; set; }
-        public int Y { get; set; }
+        public Vector2 Position { get; set; }
         public int Width { get; set; }
         public int Height { get; set; }
         #endregion

@@ -1,12 +1,14 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System;
+using System.Collections.Generic;
 using TRexGame.Engine.Entities;
 using TRexGame.Engine.Graphics;
 using TRexGame.Engine.Physics;
 using TRexGame.Engine.Resources;
 using TRexGame.GameEntities.TRex.Input;
 using TRexGame.GameEntities.TRex.TRexStates;
+using Entities = TRexGame.Engine.Entities;
 
 namespace TRexGame.GameEntities.TRex
 {
@@ -57,7 +59,6 @@ namespace TRexGame.GameEntities.TRex
         #region PROPERTIES
         // GFX
         public Sprite Sprite { get; set; }
-        public TRexAnimator Animator { get; private set; }
 
         // State
         public TRexStateMachine StateMachine { get; private set; }
@@ -73,12 +74,38 @@ namespace TRexGame.GameEntities.TRex
         public float JumpForce { get; private set; }
         public bool IsAlive { get; private set; }
         public Vector2 StartingPosition { get; private set; }
+
+        // Components
+        public Rigidbody Rigidbody { get; set; }
+        public RectTransform RectTransform { get; set; }
+        public SpriteRenderer SpriteRenderer { get; set; }
+        public TRexAnimator Animator { get; private set; }
         #endregion
 
         #region GAME ENTITY CALLBACKS
         public override void Awake()
         {
-            Animator = new(_gameResources.TexSpritesheet, this);
+            Animator = new(this, _gameResources.TexSpritesheet, this);
+            Rigidbody = new(this);
+            RectTransform = new(
+                this, 
+                new(
+                    TREX_START_POS_X,
+                    _screenHeight - TREX_START_POS_Y - Sprite.RectTransform.Height
+                ), 
+                _screenWidth, _screenHeight);
+            SpriteRenderer = new(this);
+
+            InitializeComponents(
+                new List<Entities.IGameComponent>
+                {
+                    Rigidbody,
+                    RectTransform,
+                    SpriteRenderer,
+                    Animator,
+                }
+            );
+
             Position = new(
                     TREX_START_POS_X,
                     _screenHeight - TREX_START_POS_Y - Sprite.RectTransform.Height
@@ -93,6 +120,7 @@ namespace TRexGame.GameEntities.TRex
             StartingPosition = Position;
 
             StateMachine = new TRexStateMachine(this);
+
         }
         public override void Start() { }
         public override void Update(GameTime gameTime)

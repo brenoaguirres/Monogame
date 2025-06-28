@@ -54,6 +54,11 @@ namespace TRexGame.Engine.Entities
         #endregion
 
         #region PUBLIC METHODS
+        public virtual void InitializeComponents(List<Entities.IGameComponent> components)
+        {
+            GameComponents = components;
+        }
+
         public abstract void Awake();
         public abstract void Start();
         public abstract void Update(GameTime gameTime);

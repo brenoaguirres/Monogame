@@ -8,9 +8,10 @@ namespace TRexGame.Engine.Physics
     public class Rigidbody : Entities.IGameComponent
     {
         #region CONSTRUCTOR
-        public Rigidbody(GameEntity gameEntity)
+        public Rigidbody(GameEntity gameEntity, float mass=1f)
         {
             _myGameEntity = gameEntity;
+            _mass = mass;
         }
         #endregion
 
@@ -35,22 +36,41 @@ namespace TRexGame.Engine.Physics
         public bool UseGravity { get { return _useGravity; } set { _useGravity = value; } }
         #endregion
 
+        #region PRIVATE METHODS
+        private void ApplyGravity(GameTime gameTime)
+        {
+            if (!_useGravity || _isKinematic) return;
+
+            float deltaTime = (float)gameTime.ElapsedGameTime.TotalSeconds;
+
+            _cumulativeAcceleration += _mass * _gravityScale * deltaTime;
+
+            _linearVelocity = new Vector2(
+                _linearVelocity.X,
+                _linearVelocity.Y + _cumulativeAcceleration
+            );
+        }
+        private void ApplyVelocity(GameTime gameTime)
+        {
+            float deltaTime = (float)gameTime.ElapsedGameTime.TotalSeconds;
+            Vector2 movement = new Vector2(_linearVelocity.X * deltaTime, _linearVelocity.Y * deltaTime);
+
+            _transform.Position = new Vector2(
+                _transform.Position.X + movement.X,
+                _transform.Position.Y + movement.Y
+            );
+        }
+        #endregion
+
         #region PUBLIC METHODS
-        public void ApplyGravity()
-        {
-
-        }
-        public void ApplyVelocity()
-        {
-
-        }
         public void InitializePhysics()
         {
             _transform = _myGameEntity.GetComponent<RectTransform>();
         }
-        public void UpdatePhysics()
+        public void UpdatePhysics(GameTime gameTime)
         {
-
+            ApplyGravity(gameTime);
+            ApplyVelocity(gameTime);
         }
         #endregion
     }
