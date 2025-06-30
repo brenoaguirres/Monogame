@@ -8,30 +8,30 @@ namespace TRexGame.GameEntities.TRex
     {
         #region CONSTANTS
         // base sprite width / height
-        private const int SPR_BASE_W = 44;
-        private const int SPR_BASE_H = 52;
+        public const int SPR_BASE_W = 44;
+        public const int SPR_BASE_H = 52;
 
         // idle sprites
-        private const int SPR_IDLE01_X = 40;
-        private const int SPR_IDLE01_Y = 1;
+        public const int SPR_IDLE01_X = 40;
+        public const int SPR_IDLE01_Y = 1;
 
         // blink sprites
-        private const int SPR_BLINK01_X = 848;
-        private const int SPR_BLINK01_Y = 0;
-        private const int SPR_BLINK02_X = 892;
-        private const int SPR_BLINK02_Y = 0;
+        public const int SPR_BLINK01_X = 848;
+        public const int SPR_BLINK01_Y = 0;
+        public const int SPR_BLINK02_X = 892;
+        public const int SPR_BLINK02_Y = 0;
 
         // begin jump sprites
-        private const int SPR_BEGINJUMP01_X = 936;
-        private const int SPR_BEGINJUMP01_Y = 0;
+        public const int SPR_BEGINJUMP01_X = 936;
+        public const int SPR_BEGINJUMP01_Y = 0;
 
         // jump sprites
-        private const int SPR_JUMP01_X = 848;
-        private const int SPR_JUMP01_Y = 0;
+        public const int SPR_JUMP01_X = 848;
+        public const int SPR_JUMP01_Y = 0;
 
         // fall sprites
-        private const int SPR_FALL01_X = 980;
-        private const int SPR_FALL01_Y = 0;
+        public const int SPR_FALL01_X = 980;
+        public const int SPR_FALL01_Y = 0;
         #endregion
 
         #region CONSTRUCTOR

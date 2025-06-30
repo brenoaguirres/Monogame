@@ -23,7 +23,7 @@ namespace TRexGame.GameEntities.TRex
     }
     #endregion
 
-    public class TRex : GameEntity, IGameDrawable, IGamePhysicsBody
+    public class TRex : GameEntity
     {
         #region CONSTANTS
         private const int TREX_START_POS_X = 1;
@@ -32,7 +32,7 @@ namespace TRexGame.GameEntities.TRex
 
         #region CONSTRUCTOR
         public TRex(
-            GameResources gameResources, 
+            GameResources gameResources,
             int SCR_WID, 
             int SCR_HEI,
             string name = "TRex",
@@ -41,9 +41,6 @@ namespace TRexGame.GameEntities.TRex
             Layer layer = Layer.Player
             ) : base(name, draworder, tag, layer)
         {
-            Position = new(0, 0);
-            Velocity = new(0, 0);
-
             _gameResources = gameResources;
             _screenWidth = SCR_WID;
             _screenHeight = SCR_HEI;
@@ -57,16 +54,15 @@ namespace TRexGame.GameEntities.TRex
         #endregion
 
         #region PROPERTIES
-        // GFX
-        public Sprite Sprite { get; set; }
-
         // State
         public TRexStateMachine StateMachine { get; private set; }
 
-        // Audio
+        // Components
+        public Rigidbody Rigidbody { get; set; }
+        public RectTransform RectTransform { get; set; }
+        public SpriteRenderer SpriteRenderer { get; set; }
+        public TRexAnimator Animator { get; private set; }
         public TRexAudioSource AudioSource { get; private set; }
-
-        // Input
         public TRexInput Input { get; private set; }
 
         // Game
@@ -74,27 +70,24 @@ namespace TRexGame.GameEntities.TRex
         public float JumpForce { get; private set; }
         public bool IsAlive { get; private set; }
         public Vector2 StartingPosition { get; private set; }
-
-        // Components
-        public Rigidbody Rigidbody { get; set; }
-        public RectTransform RectTransform { get; set; }
-        public SpriteRenderer SpriteRenderer { get; set; }
-        public TRexAnimator Animator { get; private set; }
         #endregion
 
         #region GAME ENTITY CALLBACKS
         public override void Awake()
         {
-            Animator = new(this, _gameResources.TexSpritesheet, this);
+            Animator = new(this, _gameResources.TexSpritesheet);
             Rigidbody = new(this);
+
             RectTransform = new(
                 this, 
                 new(
                     TREX_START_POS_X,
-                    _screenHeight - TREX_START_POS_Y - Sprite.RectTransform.Height
+                    _screenHeight - TREX_START_POS_Y - TRexGraphics.SPR_BASE_H
                 ), 
                 _screenWidth, _screenHeight);
             SpriteRenderer = new(this);
+            AudioSource = new(this, new TRexAudio(_gameResources));
+            Input = new(this);
 
             InitializeComponents(
                 new List<Entities.IGameComponent>
@@ -103,21 +96,17 @@ namespace TRexGame.GameEntities.TRex
                     RectTransform,
                     SpriteRenderer,
                     Animator,
+                    AudioSource,
+                    Input
                 }
             );
 
-            Position = new(
-                    TREX_START_POS_X,
-                    _screenHeight - TREX_START_POS_Y - Sprite.RectTransform.Height
-                );
-
-            AudioSource = new(new TRexAudio(_gameResources));
-            Input = new();
 
             Speed = 10;
             JumpForce = -600;
             IsAlive = true;
-            StartingPosition = Position;
+            StartingPosition = RectTransform.Position;
+            Rigidbody.Mass = 80f;
 
             StateMachine = new TRexStateMachine(this);
 
@@ -142,12 +131,8 @@ namespace TRexGame.GameEntities.TRex
         // Implement Animator logic for stacking sprites
         public void Draw(SpriteBatch spriteBatch, GameTime gameTime)
         {
-            Sprite.Draw(spriteBatch, Position);
+            SpriteRenderer.Draw(spriteBatch, RectTransform);
         }
-
-        #region IPhysicsBody INTERFACE
-        public Vector2 Velocity { get; set; }
-        #endregion
         #endregion
     }
 }

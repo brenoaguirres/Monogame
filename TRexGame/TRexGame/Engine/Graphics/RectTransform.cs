@@ -25,5 +25,12 @@ namespace TRexGame.Engine.Graphics
         public int Width { get; set; }
         public int Height { get; set; }
         #endregion
+
+        #region IGameComponent INTERFACE
+        public void InitializeComponent()
+        {
+
+        }
+        #endregion
     }
 }

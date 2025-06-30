@@ -13,28 +13,17 @@ namespace TRexGame.Engine.Graphics
         public Sprite(Texture2D texture, int x, int y, int width, int height)
         {
             Texture = texture;
-            RectTransform = new RectTransform(x, y, width, height);
+            Position = new Vector2(x, y);
+            Size = new Vector2(width, height);
             TintColor = Color.White;
         }
         #endregion
 
         #region PROPERTIES
         public Texture2D Texture { get; set; }
-        public RectTransform RectTransform { get; set; }
+        public Vector2 Position { get; set; }
+        public Vector2 Size { get; set; }
         public Color TintColor {  get; set; }
-        #endregion
-
-        #region PUBLIC METHODS
-        // Pass this to SpriteRenderer script to implement Sprite[] rendering
-        public void Draw(SpriteBatch spriteBatch, Vector2 Position)
-        {
-            spriteBatch.Draw(
-                Texture,
-                Position, 
-                new Rectangle(RectTransform.X, RectTransform.Y, RectTransform.Width, RectTransform.Height),
-                TintColor
-                );
-        }
         #endregion
     }
 }

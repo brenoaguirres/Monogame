@@ -22,7 +22,6 @@ namespace TRexGame.Engine.Entities
             DrawOrder = draworder;
             Tag = tag;
             Layer = layer;
-            Position = new(0, 0);
 
             EntityManager.Instance.Instantiate(this);
         }
@@ -39,7 +38,6 @@ namespace TRexGame.Engine.Entities
         public int DrawOrder { get; set; }
         public string Tag { get; set; }
         public Layer Layer { get; set; }
-        public Vector2 Position {  get; set; }
         #endregion
 
         #region GAMEENTITY METHODS
@@ -57,6 +55,8 @@ namespace TRexGame.Engine.Entities
         public virtual void InitializeComponents(List<Entities.IGameComponent> components)
         {
             GameComponents = components;
+            foreach (var comp in GameComponents)
+                comp.InitializeComponent();
         }
 
         public abstract void Awake();

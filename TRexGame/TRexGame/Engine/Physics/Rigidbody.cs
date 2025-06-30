@@ -73,5 +73,12 @@ namespace TRexGame.Engine.Physics
             ApplyVelocity(gameTime);
         }
         #endregion
+
+        #region IGameComponent INTERFACE
+        public void InitializeComponent()
+        {
+
+        }
+        #endregion
     }
 }

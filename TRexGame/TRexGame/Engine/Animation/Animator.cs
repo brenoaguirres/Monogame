@@ -12,19 +12,16 @@ namespace TRexGame.Engine.Animation
     public abstract class Animator : Entities.IGameComponent
     {
         #region CONSTRUCTOR
-        public Animator(GameEntity gameEntity, IGameGraphics graphics, IGameDrawable drawable)
+        public Animator(GameEntity gameEntity, IGameGraphics graphics)
         {
             _myGameEntity = gameEntity;
             Graphics = graphics;
-            CurrentAnimation = Graphics.DefaultAnimation;
-            GameDrawable = drawable;
-
-            InitializeAnimator();
         }
         #endregion
 
         #region FIELDS
         private GameEntity _myGameEntity;
+        private SpriteRenderer _myRenderer;
         #endregion
 
         #region PROPERTIES
@@ -32,7 +29,6 @@ namespace TRexGame.Engine.Animation
         public IGameGraphics Graphics { get; protected set; }
         public AnimationClip DefaultAnimation => Graphics.DefaultAnimation;
         public AnimationClip CurrentAnimation { get; protected set; }
-        public IGameDrawable GameDrawable { get; protected set; }
 
         public bool IsPlaying = false;
         public float PlaybackTime { get; protected set; }
@@ -41,13 +37,6 @@ namespace TRexGame.Engine.Animation
         #region EVENTS
         public Action<AnimationClip> OnAnimationEnter;
         public Action<AnimationClip> OnAnimationExit;
-        #endregion
-
-        #region PRIVATE METHODS
-        protected void InitializeAnimator()
-        {
-            Play(DefaultAnimation);
-        }
         #endregion
 
         #region PUBLIC METHODS
@@ -68,13 +57,13 @@ namespace TRexGame.Engine.Animation
                         Stop();
                     else
                     {
-                        GameDrawable.Sprite = CurrentAnimation.NextSprite();
+                        _myRenderer.Sprite = CurrentAnimation.NextSprite();
                         Play(CurrentAnimation);
                     }
                 }
 
                 if (PlaybackTime >= CurrentAnimation.CurrentFrameTimestamp + CurrentAnimation.TotalFrameTime)
-                    GameDrawable.Sprite = CurrentAnimation.NextSprite();
+                    _myRenderer.Sprite = CurrentAnimation.NextSprite();
 
                 PlaybackTime += (float)gameTime.ElapsedGameTime.TotalSeconds;
             }
@@ -93,7 +82,7 @@ namespace TRexGame.Engine.Animation
             CurrentAnimation.ResetClip();
             IsPlaying = true;
             OnAnimationEnter?.Invoke(CurrentAnimation);
-            GameDrawable.Sprite = CurrentAnimation.CurrentFrameSprite;
+            _myRenderer.Sprite = CurrentAnimation.CurrentFrameSprite;
         }
 
         public void Pause()
@@ -124,6 +113,14 @@ namespace TRexGame.Engine.Animation
                 Play(DefaultAnimation);
                 return;
             }
+        }
+        #endregion
+
+        #region IGameComponent INTERFACE
+        public void InitializeComponent()
+        {
+            _myRenderer = _myGameEntity.GetComponent<SpriteRenderer>();
+            Play(DefaultAnimation);
         }
         #endregion
     }

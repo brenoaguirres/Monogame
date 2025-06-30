@@ -1,25 +1,29 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Audio;
-using SharpDX.Direct3D9;
+using TRexGame.Engine.Entities;
+using TRexGame.Engine.Graphics;
 
 namespace TRexGame.Engine.Audio
 {
-    public abstract class AudioSource
+    public abstract class AudioSource : Entities.IGameComponent
     {
         #region CONSTRUCTOR
-        public AudioSource(GameAudio audio)
+        public AudioSource(GameEntity gameEntity, GameAudio audio)
         {
+            MyGameEntity = gameEntity;
             Audio = audio;
         }
         #endregion
 
         #region FIELDS
+        private GameEntity _myGameEntity;
         protected SoundEffectInstance _currentInstance;
         protected float _currentSfxPlayback = 0;
         protected float _currentSfxDuration = 0;
         #endregion
 
         #region PROPERTIES
+        public GameEntity MyGameEntity { get { return _myGameEntity; } set { _myGameEntity = value; } }
         protected GameAudio Audio { get; }
         public SoundEffect CurrentSfx { get; protected set; }
         public bool IsPlaying { get; private set; }
@@ -74,6 +78,13 @@ namespace TRexGame.Engine.Audio
             _currentSfxPlayback = 0;
             _currentInstance.IsLooped = false;
             _currentInstance = null;
+        }
+        #endregion
+
+        #region IGameComponent INTERFACE
+        public void InitializeComponent()
+        {
+
         }
         #endregion
     }

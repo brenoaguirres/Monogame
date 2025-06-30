@@ -1,4 +1,5 @@
 ﻿using TRexGame.Engine.Audio;
+using TRexGame.Engine.Entities;
 
 
 namespace TRexGame.GameEntities.TRex
@@ -6,7 +7,7 @@ namespace TRexGame.GameEntities.TRex
     public class TRexAudioSource : AudioSource
     {
         #region CONSTRUCTOR
-        public TRexAudioSource(TRexAudio audio) : base(audio) { }
+        public TRexAudioSource(GameEntity gameEntity, TRexAudio audio) : base(gameEntity, audio) { }
         #endregion
 
         #region PUBLIC METHODS

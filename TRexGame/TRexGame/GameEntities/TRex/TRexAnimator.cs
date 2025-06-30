@@ -11,7 +11,7 @@ namespace TRexGame.GameEntities.TRex
     public class TRexAnimator : Animator
     {
         #region CONSTRUCTOR
-        public TRexAnimator(GameEntity gameEntity, Texture2D texture, IGameDrawable drawable) : base (gameEntity, new TRexGraphics(texture), drawable)
+        public TRexAnimator(GameEntity gameEntity, Texture2D texture) : base (gameEntity, new TRexGraphics(texture))
         {
         }
         #endregion

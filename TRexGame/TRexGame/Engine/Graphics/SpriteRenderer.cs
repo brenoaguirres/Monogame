@@ -17,17 +17,25 @@ namespace TRexGame.Engine.Graphics
 
         #region FIELDS
         private GameEntity _myGameEntity;
-        private List<Sprite> _sprite;
+        private Sprite _sprite;
         #endregion
 
         #region PROPERTIES
         public GameEntity MyGameEntity { get { return _myGameEntity; } set { _myGameEntity = value; } }
-        public List<Sprite> Sprite { get { return _sprite; } set { _sprite = value; } } 
+        public Sprite Sprite { get { return _sprite; } set { _sprite = value; } } 
         #endregion
 
         #region PUBLIC METHODS
-        public void Draw(SpriteBatch spriteBatch, Vector2 Position)
+        public void Draw(SpriteBatch spriteBatch, RectTransform transform)
         {
+            spriteBatch.Draw(
+                    _sprite.Texture,
+                    transform.Position,
+                    new Rectangle((int)_sprite.Position.X, (int)_sprite.Position.Y,
+                    (int)_sprite.Size.X, (int)_sprite.Size.Y),
+                    _sprite.TintColor
+                    );
+            /*
             foreach (var spr in Sprite)
                 spriteBatch.Draw(
                     spr.Texture,
@@ -35,7 +43,14 @@ namespace TRexGame.Engine.Graphics
                     new Rectangle((int)spr.RectTransform.Position.X, (int)spr.RectTransform.Position.Y,
                     spr.RectTransform.Width, spr.RectTransform.Height),
                     spr.TintColor
-                    );
+                    );*/
+        }
+        #endregion
+
+        #region IGameComponent INTERFACE
+        public void InitializeComponent()
+        {
+
         }
         #endregion
     }
