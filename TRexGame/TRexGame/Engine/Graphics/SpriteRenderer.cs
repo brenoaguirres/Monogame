@@ -18,15 +18,28 @@ namespace TRexGame.Engine.Graphics
         #region FIELDS
         private GameEntity _myGameEntity;
         private Sprite _sprite;
+        private RectTransform _transform;
         #endregion
 
         #region PROPERTIES
         public GameEntity MyGameEntity { get { return _myGameEntity; } set { _myGameEntity = value; } }
-        public Sprite Sprite { get { return _sprite; } set { _sprite = value; } } 
+        public Sprite Sprite 
+        { 
+            get 
+            { 
+                return _sprite; 
+            } 
+            set 
+            { 
+                _sprite = value;
+                if (_transform != null)
+                    _transform.Size = _sprite.Size;
+            } 
+        }
         #endregion
 
         #region PUBLIC METHODS
-        public void Draw(SpriteBatch spriteBatch, RectTransform transform)
+        public void Draw(SpriteBatch spriteBatch, GameTime gameTime, RectTransform transform)
         {
             spriteBatch.Draw(
                     _sprite.Texture,
@@ -50,7 +63,7 @@ namespace TRexGame.Engine.Graphics
         #region IGameComponent INTERFACE
         public void InitializeComponent()
         {
-
+            _transform = _myGameEntity.GetComponent<RectTransform>();
         }
         #endregion
     }

@@ -15,6 +15,13 @@ namespace TRexGame.Engine.Physics
         }
         #endregion
 
+
+        #region COLLISION PLACEHOLDER
+        // TODO: Remove this logic after collision implemented
+        private float _groundPos = 0;
+        public float GroundPos { get => _groundPos; }
+        #endregion
+
         #region FIELDS
         private GameEntity _myGameEntity;
         private float _mass = 1f;
@@ -60,6 +67,14 @@ namespace TRexGame.Engine.Physics
                 _transform.Position.Y + movement.Y
             );
         }
+        private void CheckCollisions()
+        {
+            if (_transform.Position.Y >= _groundPos)
+            {
+                _transform.Position = new Vector2(_transform.Position.X, _groundPos);
+                CumulativeAcceleration = 0;
+            }
+        }
         #endregion
 
         #region PUBLIC METHODS
@@ -71,13 +86,15 @@ namespace TRexGame.Engine.Physics
         {
             ApplyGravity(gameTime);
             ApplyVelocity(gameTime);
+            CheckCollisions();
         }
         #endregion
 
         #region IGameComponent INTERFACE
         public void InitializeComponent()
         {
-
+            _transform = _myGameEntity.GetComponent<RectTransform>();
+            _groundPos = _transform.Position.Y - (_transform.Size.Y / 2);
         }
         #endregion
     }

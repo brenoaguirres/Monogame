@@ -77,15 +77,14 @@ namespace TRexGame.GameEntities.TRex
         {
             Animator = new(this, _gameResources.TexSpritesheet);
             Rigidbody = new(this);
-
+            SpriteRenderer = new(this);
             RectTransform = new(
                 this, 
                 new(
                     TREX_START_POS_X,
                     _screenHeight - TREX_START_POS_Y - TRexGraphics.SPR_BASE_H
-                ), 
-                _screenWidth, _screenHeight);
-            SpriteRenderer = new(this);
+                )
+                );
             AudioSource = new(this, new TRexAudio(_gameResources));
             Input = new(this);
 
@@ -114,6 +113,7 @@ namespace TRexGame.GameEntities.TRex
         public override void Start() { }
         public override void Update(GameTime gameTime)
         {
+            Rigidbody.UpdatePhysics(gameTime);
             Input.UpdateInputs(gameTime);
             StateMachine.UpdateStateMachine(gameTime);
             Animator.UpdateAnimator(gameTime);
@@ -121,18 +121,9 @@ namespace TRexGame.GameEntities.TRex
         }
         public override void OnRenderEntity(SpriteBatch spriteBatch, GameTime gameTime)
         {
-            Draw(spriteBatch, gameTime);
+            SpriteRenderer.Draw(spriteBatch, gameTime, RectTransform);
         }
         public override void OnDestroy() { }
-        #endregion
-
-        #region IGameDrawable INTERFACE
-        // Implement Sprite[] rendering, if sprite.Length == 1 call normal sprite.draw, else call sprite.draw(Sprite[])
-        // Implement Animator logic for stacking sprites
-        public void Draw(SpriteBatch spriteBatch, GameTime gameTime)
-        {
-            SpriteRenderer.Draw(spriteBatch, RectTransform);
-        }
         #endregion
     }
 }

@@ -17,7 +17,6 @@ namespace TRexGame.GameEntities.TRex.TRexStates.States
         #region PRIVATE METHODS
         private void ResetState()
         {
-            _context.Rigidbody.CumulativeAcceleration = 0f;
             _checkGround = false;
         }
         #endregion
@@ -45,24 +44,7 @@ namespace TRexGame.GameEntities.TRex.TRexStates.States
         {
             base.Update(gameTime);
 
-            float deltaTime = (float)gameTime.ElapsedGameTime.TotalSeconds;
-            float startPos = _context.StartingPosition.Y;
-
-            _context.Rigidbody.CumulativeAcceleration += _context.Rigidbody.Mass * _context.Rigidbody.GravityScale * deltaTime;
-
-            _context.Rigidbody.LinearVelocity = new Vector2(
-                _context.Rigidbody.LinearVelocity.X,
-                _context.Rigidbody.LinearVelocity.Y + _context.Rigidbody.CumulativeAcceleration
-            );
-
-            float movement = _context.Rigidbody.LinearVelocity.Y * deltaTime;
-
-            _context.RectTransform.Position = new Vector2(
-                _context.RectTransform.Position.X,
-                MathF.Min(startPos, _context.RectTransform.Position.Y + movement)
-            );
-
-            if (_context.RectTransform.Position.Y >= startPos)
+            if (_context.RectTransform.Position.Y >= _context.Rigidbody.GroundPos)
             {
                 _checkGround = true;
             }
