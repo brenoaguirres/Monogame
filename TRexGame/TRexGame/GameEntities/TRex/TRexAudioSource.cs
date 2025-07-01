@@ -7,7 +7,7 @@ namespace TRexGame.GameEntities.TRex
     public class TRexAudioSource : AudioSource
     {
         #region CONSTRUCTOR
-        public TRexAudioSource(GameEntity gameEntity, TRexAudio audio) : base(gameEntity, audio) { }
+        public TRexAudioSource(TRexAudio audio) : base(audio) { }
         #endregion
 
         #region PUBLIC METHODS

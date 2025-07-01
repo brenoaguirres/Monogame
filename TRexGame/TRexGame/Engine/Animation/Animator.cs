@@ -12,9 +12,8 @@ namespace TRexGame.Engine.Animation
     public abstract class Animator : Entities.IGameComponent
     {
         #region CONSTRUCTOR
-        public Animator(GameEntity gameEntity, IGameGraphics graphics)
+        public Animator(IGameGraphics graphics)
         {
-            _myGameEntity = gameEntity;
             Graphics = graphics;
         }
         #endregion

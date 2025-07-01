@@ -57,8 +57,10 @@ namespace TRexGame
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
                 Exit();
 
+            EntityManager.Instance.InstantiationStage();
             EntityManager.Instance.AwakeStage();
             EntityManager.Instance.StartStage();
+            // missing animation, draw and physics stages
             EntityManager.Instance.UpdateStage(gameTime);
             EntityManager.Instance.CleanupStage();
 

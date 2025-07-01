@@ -23,7 +23,12 @@ namespace TRexGame.GameEntities.TRex.TRexStates.States
 
         public override ETRexState CheckTransitions()
         {
-            if (_context.Rigidbody.LinearVelocity.Y >= 0 || _context.Input.CancelJumpInput)
+            if (_context.Input.CancelJumpInput)
+            {
+                _context.Rigidbody.LinearVelocity = new Vector2(_context.Rigidbody.LinearVelocity.X, _context.JumpForce * -1);
+                return ETRexState.FALL;
+            }
+            if (_context.Rigidbody.LinearVelocity.Y >= 0)
             {
                 _context.Rigidbody.LinearVelocity = new Vector2(_context.Rigidbody.LinearVelocity.X, 0);
                 return ETRexState.FALL;

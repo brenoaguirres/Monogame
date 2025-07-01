@@ -8,9 +8,8 @@ namespace TRexGame.Engine.Audio
     public abstract class AudioSource : Entities.IGameComponent
     {
         #region CONSTRUCTOR
-        public AudioSource(GameEntity gameEntity, GameAudio audio)
+        public AudioSource(GameAudio audio)
         {
-            MyGameEntity = gameEntity;
             Audio = audio;
         }
         #endregion

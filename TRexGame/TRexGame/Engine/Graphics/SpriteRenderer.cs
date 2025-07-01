@@ -3,16 +3,14 @@ using Microsoft.Xna.Framework;
 using Entities = TRexGame.Engine.Entities;
 using Microsoft.Xna.Framework.Graphics;
 using System.Collections.Generic;
+using System.Diagnostics;
 
 namespace TRexGame.Engine.Graphics
 {
     public class SpriteRenderer : Entities.IGameComponent
     {
         #region CONSTRUCTOR
-        public SpriteRenderer(GameEntity gameEntity)
-        {
-            _myGameEntity = gameEntity;
-        }
+        public SpriteRenderer(){}
         #endregion
 
         #region FIELDS
@@ -39,24 +37,17 @@ namespace TRexGame.Engine.Graphics
         #endregion
 
         #region PUBLIC METHODS
-        public void Draw(SpriteBatch spriteBatch, GameTime gameTime, RectTransform transform)
+        public void Draw(SpriteBatch spriteBatch, GameTime gameTime)
         {
+            if (_sprite == null) return;
+
             spriteBatch.Draw(
                     _sprite.Texture,
-                    transform.Position,
+                    new Vector2(_transform.Position.X, _transform.Position.Y),
                     new Rectangle((int)_sprite.Position.X, (int)_sprite.Position.Y,
                     (int)_sprite.Size.X, (int)_sprite.Size.Y),
                     _sprite.TintColor
                     );
-            /*
-            foreach (var spr in Sprite)
-                spriteBatch.Draw(
-                    spr.Texture,
-                    Position,
-                    new Rectangle((int)spr.RectTransform.Position.X, (int)spr.RectTransform.Position.Y,
-                    spr.RectTransform.Width, spr.RectTransform.Height),
-                    spr.TintColor
-                    );*/
         }
         #endregion
 

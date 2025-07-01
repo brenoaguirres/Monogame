@@ -26,6 +26,10 @@ namespace TRexGame.GameEntities.TRex
     public class TRex : GameEntity
     {
         #region CONSTANTS
+        private const float MASS = 60;
+        private const float JUMPFORCE = -600;
+        private const float SPEED = 10;
+
         private const int TREX_START_POS_X = 1;
         private const int TREX_START_POS_Y = 16;
         #endregion
@@ -59,7 +63,6 @@ namespace TRexGame.GameEntities.TRex
 
         // Components
         public Rigidbody Rigidbody { get; set; }
-        public RectTransform RectTransform { get; set; }
         public SpriteRenderer SpriteRenderer { get; set; }
         public TRexAnimator Animator { get; private set; }
         public TRexAudioSource AudioSource { get; private set; }
@@ -75,18 +78,17 @@ namespace TRexGame.GameEntities.TRex
         #region GAME ENTITY CALLBACKS
         public override void Awake()
         {
-            Animator = new(this, _gameResources.TexSpritesheet);
-            Rigidbody = new(this);
-            SpriteRenderer = new(this);
             RectTransform = new(
-                this, 
                 new(
                     TREX_START_POS_X,
-                    _screenHeight - TREX_START_POS_Y - TRexGraphics.SPR_BASE_H
+                    120
                 )
                 );
-            AudioSource = new(this, new TRexAudio(_gameResources));
-            Input = new(this);
+            Animator = new(_gameResources.TexSpritesheet);
+            Rigidbody = new(MASS);
+            SpriteRenderer = new();
+            AudioSource = new(new TRexAudio(_gameResources));
+            Input = new();
 
             InitializeComponents(
                 new List<Entities.IGameComponent>
@@ -101,11 +103,10 @@ namespace TRexGame.GameEntities.TRex
             );
 
 
-            Speed = 10;
-            JumpForce = -600;
+            Speed = SPEED;
+            JumpForce = JUMPFORCE;
             IsAlive = true;
             StartingPosition = RectTransform.Position;
-            Rigidbody.Mass = 80f;
 
             StateMachine = new TRexStateMachine(this);
 
@@ -119,9 +120,10 @@ namespace TRexGame.GameEntities.TRex
             Animator.UpdateAnimator(gameTime);
             AudioSource.UpdateAudioSource(gameTime);
         }
-        public override void OnRenderEntity(SpriteBatch spriteBatch, GameTime gameTime)
+        public override void OnRenderEntity() { }
+        public override void Draw(SpriteBatch spriteBatch, GameTime gameTime)
         {
-            SpriteRenderer.Draw(spriteBatch, gameTime, RectTransform);
+            SpriteRenderer.Draw(spriteBatch, gameTime);
         }
         public override void OnDestroy() { }
         #endregion

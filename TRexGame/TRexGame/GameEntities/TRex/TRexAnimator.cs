@@ -11,7 +11,7 @@ namespace TRexGame.GameEntities.TRex
     public class TRexAnimator : Animator
     {
         #region CONSTRUCTOR
-        public TRexAnimator(GameEntity gameEntity, Texture2D texture) : base (gameEntity, new TRexGraphics(texture))
+        public TRexAnimator(Texture2D texture) : base (new TRexGraphics(texture))
         {
         }
         #endregion
@@ -69,7 +69,8 @@ namespace TRexGame.GameEntities.TRex
         }
         private void AnimateRunState(GameTime gameTime, TRexGraphics graphics)
         {
-            throw new NotImplementedException();
+            if (!IsPlaying || CurrentAnimation != graphics.RunAnimation) 
+                Play(graphics.RunAnimation);
         }
         private void AnimateJumpState(GameTime gameTime, TRexGraphics graphics)
         {
@@ -82,7 +83,8 @@ namespace TRexGame.GameEntities.TRex
         }
         private void AnimateDuckState(GameTime gameTime, TRexGraphics graphics)
         {
-            throw new NotImplementedException();
+            if (!IsPlaying || CurrentAnimation != graphics.DuckAnimation)
+                Play(graphics.DuckAnimation);
         }
         private void AnimateFallState(GameTime gameTime, TRexGraphics graphics)
         {

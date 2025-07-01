@@ -34,7 +34,7 @@ namespace TRexGame.GameEntities.TRex.TRexStates.States
         {
             if (_checkGround)
             {
-                return ETRexState.IDLE;
+                return ETRexState.RUN;
             }
 
             return StateKey;

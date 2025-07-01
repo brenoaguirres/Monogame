@@ -6,9 +6,8 @@ namespace TRexGame.Engine.Graphics
     public class RectTransform : Entities.IGameComponent
     {
         #region CONSTRUCTOR
-        public RectTransform(GameEntity gameEntity, Vector2 position)
+        public RectTransform(Vector2 position)
         {
-            _myGameEntity = gameEntity;
             Position = position;
         }
         #endregion

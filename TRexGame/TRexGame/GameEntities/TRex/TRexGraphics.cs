@@ -32,6 +32,20 @@ namespace TRexGame.GameEntities.TRex
         // fall sprites
         public const int SPR_FALL01_X = 980;
         public const int SPR_FALL01_Y = 0;
+
+        // run sprites
+        public const int SPR_RUN01_X = 936;
+        public const int SPR_RUN01_Y = 0;
+        public const int SPR_RUN02_X = 980;
+        public const int SPR_RUN02_Y = 0;
+
+        // duck sprites
+        public const int SPR_DUCK_W = 59;
+        public const int SPR_DUCK_H = 52; //30
+        public const int SPR_DUCK01_X = 1112;
+        public const int SPR_DUCK01_Y = 0; //19
+        public const int SPR_DUCK02_X = 1171;
+        public const int SPR_DUCK02_Y = 0; //19
         #endregion
 
         #region CONSTRUCTOR
@@ -59,6 +73,16 @@ namespace TRexGame.GameEntities.TRex
             {
                 new Sprite(texture, SPR_FALL01_X, SPR_FALL01_Y, SPR_BASE_W, SPR_BASE_H),
             };
+            _runSprites = new Sprite[]
+            {
+                new Sprite(texture, SPR_RUN01_X, SPR_RUN01_Y, SPR_BASE_W, SPR_BASE_H),
+                new Sprite(texture, SPR_RUN02_X, SPR_RUN02_Y, SPR_BASE_W, SPR_BASE_H),
+            };
+            _duckSprites = new Sprite[]
+            {
+                new Sprite(texture, SPR_DUCK01_X, SPR_DUCK01_Y, SPR_DUCK_W, SPR_DUCK_H),
+                new Sprite(texture, SPR_DUCK02_X, SPR_DUCK02_Y, SPR_DUCK_W, SPR_DUCK_H),
+            };
 
             // anim init
             IdleAnimation = new AnimationClip("Idle", true, 1, _idleSprites);
@@ -66,6 +90,8 @@ namespace TRexGame.GameEntities.TRex
             BeginJumpAnimation = new AnimationClip("BeginJump", false, 1, _beginJumpSprites);
             JumpAnimation = new AnimationClip("Jump", true, 1, _jumpSprites);
             FallAnimation = new AnimationClip("Fall", false, 1, _fallSprites);
+            RunAnimation = new AnimationClip("Run", true, 10f, _runSprites);
+            DuckAnimation = new AnimationClip("Duck", true, 10f, _duckSprites);
 
             DefaultAnimation = IdleAnimation;
         }
@@ -77,6 +103,8 @@ namespace TRexGame.GameEntities.TRex
         public Sprite[] _beginJumpSprites;
         public Sprite[] _jumpSprites;
         public Sprite[] _fallSprites;
+        public Sprite[] _runSprites;
+        public Sprite[] _duckSprites;
         #endregion
 
         #region ANIMATION CLIPS
@@ -86,6 +114,8 @@ namespace TRexGame.GameEntities.TRex
         public AnimationClip BeginJumpAnimation;
         public AnimationClip JumpAnimation;
         public AnimationClip FallAnimation;
+        public AnimationClip RunAnimation;
+        public AnimationClip DuckAnimation;
         #endregion
     }
 }

@@ -9,9 +9,8 @@ namespace TRexGame.GameEntities.TRex.Input
     public class TRexInput : Entities.IGameComponent
     {
         #region CONSTRUCTOR
-        public TRexInput(GameEntity gameEntity)
+        public TRexInput()
         {
-            MyGameEntity = gameEntity;
         }
         #endregion
 
@@ -40,7 +39,7 @@ namespace TRexGame.GameEntities.TRex.Input
                 JumpInput = false;
             }
 
-            if (!_previousKBState.IsKeyDown(Keys.Down) && keyboardState.IsKeyDown(Keys.Down))
+            if (keyboardState.IsKeyDown(Keys.Down))
             {
                 CancelJumpInput = true;
             }
@@ -49,7 +48,7 @@ namespace TRexGame.GameEntities.TRex.Input
                 CancelJumpInput = false;
             }
 
-            _previousKBState = keyboardState;
+                _previousKBState = keyboardState;
         }
         #endregion
 

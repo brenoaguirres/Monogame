@@ -2,15 +2,15 @@
 using Microsoft.Xna.Framework;
 using Entities = TRexGame.Engine.Entities;
 using TRexGame.Engine.Graphics;
+using System.Diagnostics;
 
 namespace TRexGame.Engine.Physics
 {
     public class Rigidbody : Entities.IGameComponent
     {
         #region CONSTRUCTOR
-        public Rigidbody(GameEntity gameEntity, float mass=1f)
+        public Rigidbody(float mass=1f)
         {
-            _myGameEntity = gameEntity;
             _mass = mass;
         }
         #endregion
@@ -18,8 +18,8 @@ namespace TRexGame.Engine.Physics
 
         #region COLLISION PLACEHOLDER
         // TODO: Remove this logic after collision implemented
-        private float _groundPos = 0;
-        public float GroundPos { get => _groundPos; }
+        private float _startingGroundPos;
+        public float GroundPos { get => _startingGroundPos - _transform.Size.Y; }
         #endregion
 
         #region FIELDS
@@ -46,6 +46,7 @@ namespace TRexGame.Engine.Physics
         #region PRIVATE METHODS
         private void ApplyGravity(GameTime gameTime)
         {
+            if (_transform.Position.Y > _startingGroundPos) return;
             if (!_useGravity || _isKinematic) return;
 
             float deltaTime = (float)gameTime.ElapsedGameTime.TotalSeconds;
@@ -69,9 +70,11 @@ namespace TRexGame.Engine.Physics
         }
         private void CheckCollisions()
         {
-            if (_transform.Position.Y >= _groundPos)
+            float spriteBottom = _transform.Position.Y + _transform.Size.Y;
+            if (spriteBottom > _startingGroundPos)
             {
-                _transform.Position = new Vector2(_transform.Position.X, _groundPos);
+                _linearVelocity = Vector2.Zero;
+                _transform.Position = new Vector2(_transform.Position.X, _startingGroundPos - _transform.Size.Y);
                 CumulativeAcceleration = 0;
             }
         }
@@ -94,7 +97,7 @@ namespace TRexGame.Engine.Physics
         public void InitializeComponent()
         {
             _transform = _myGameEntity.GetComponent<RectTransform>();
-            _groundPos = _transform.Position.Y - (_transform.Size.Y / 2);
+            _startingGroundPos = _transform.Position.Y;
         }
         #endregion
     }

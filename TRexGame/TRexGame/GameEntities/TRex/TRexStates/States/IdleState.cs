@@ -16,7 +16,7 @@
         public override ETRexState CheckTransitions()
         {
             if (_context.Input.JumpInput)
-                return ETRexState.JUMP;
+                return ETRexState.RUN;
 
             return StateKey;
         }

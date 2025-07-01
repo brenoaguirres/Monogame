@@ -1,6 +1,7 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.Linq;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
@@ -23,6 +24,7 @@ namespace TRexGame.Engine.Entities
         #endregion
 
         #region FIELDS
+        private List<GameEntity> _instancedEntities = new List<GameEntity>();
         private List<GameEntity> _gameEntities = new List<GameEntity>();
         private List<GameEntity> _cleanupEntities = new List<GameEntity>();
         private List<GameEntity> _awakeEntities = new List<GameEntity>();
@@ -30,13 +32,13 @@ namespace TRexGame.Engine.Entities
         #endregion
 
         #region PROPERTIES
-        public List<GameEntity> Entities { get { return _gameEntities; } }
+        public IEnumerable<GameEntity> Entities => new ReadOnlyCollection<GameEntity>(_gameEntities);
         #endregion
 
         #region EVENTS
         private Action OnAwake;
         private Action OnStart;
-        private Action<SpriteBatch, GameTime> OnRenderEntity;
+        private Action OnRenderEntity;
         private Action<GameTime> OnUpdate;
         #endregion
 
@@ -49,14 +51,7 @@ namespace TRexGame.Engine.Entities
                 )
                 return;
 
-            _instance._gameEntities.Add(entity);
-            _instance._awakeEntities.Add(entity);
-            _instance._startEntities.Add(entity);
-
-            _instance.OnAwake += entity.Awake;
-            _instance.OnStart += entity.Start;
-            _instance.OnUpdate += entity.Update;
-            _instance.OnRenderEntity += entity.OnRenderEntity;
+            _instancedEntities.Add(entity);
         }
 
         public void Destroy(GameEntity entity)
@@ -73,12 +68,30 @@ namespace TRexGame.Engine.Entities
             _instance.OnUpdate -= entity.Update;
             _instance.OnRenderEntity -= entity.OnRenderEntity;
         }
+        public void InstantiationStage()
+        {
+            foreach (GameEntity entity in _instancedEntities)
+            {
+                _instance._gameEntities.Add(entity);
+                _instance._awakeEntities.Add(entity);
+                _instance._startEntities.Add(entity);
+
+                _instance.OnAwake += entity.Awake;
+                _instance.OnStart += entity.Start;
+                _instance.OnUpdate += entity.Update;
+                _instance.OnRenderEntity += entity.OnRenderEntity;
+            }
+
+            _instancedEntities.Clear();
+        }
         public void AwakeStage()
         {
             OnAwake?.Invoke();
 
             foreach (var entity in _instance._awakeEntities)
                 _instance.OnAwake -= entity.Awake;
+
+            _awakeEntities.Clear();
         }
         public void StartStage()
         {
@@ -86,6 +99,8 @@ namespace TRexGame.Engine.Entities
 
             foreach (var entity in _instance._startEntities)
                 _instance.OnStart -= entity.Start;
+
+            _startEntities.Clear();
         }
         public void UpdateStage(GameTime gameTime)
         {
@@ -93,7 +108,10 @@ namespace TRexGame.Engine.Entities
         }
         public void RenderEntityStage(SpriteBatch spriteBatch, GameTime gameTime)
         {
-            OnRenderEntity?.Invoke(spriteBatch, gameTime);
+            foreach (var entity in _gameEntities.OrderBy(e => e.DrawOrder))
+                entity.Draw(spriteBatch, gameTime);
+            
+            OnRenderEntity?.Invoke();
         }
         public void CleanupStage()
         {
@@ -107,8 +125,6 @@ namespace TRexGame.Engine.Entities
             }
 
             _cleanupEntities.Clear();
-            _awakeEntities.Clear();
-            _startEntities.Clear();
         }
         #endregion
     }
