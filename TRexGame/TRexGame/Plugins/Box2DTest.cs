@@ -10,9 +10,6 @@ namespace TRexGame.Plugins
 
         // Stores the ground body
         private B2BodyId _groundId;
-
-        // Stores the ground polygon
-        private B2Polygon _groundBox;
         #endregion
 
         #region PRIVATE METHODS
@@ -23,6 +20,7 @@ namespace TRexGame.Plugins
             _worldId = B2Worlds.b2CreateWorld(ref worldDef);
         }
 
+        // Creating a STATIC body
         private void CreateGroundBox()
         {
             // Define a body with position, damping, etc.
@@ -34,7 +32,10 @@ namespace TRexGame.Plugins
             groundBodyDef.position = new B2Vec2(0.0f, -10.0f);
             _groundId = B2Bodies.b2CreateBody(_worldId, ref groundBodyDef);
 
-            _groundBox = B2Geometries.b2MakeBox(50.0f, 10.0f);
+            B2Polygon _groundBox = B2Geometries.b2MakeBox(50.0f, 10.0f);
+
+            B2ShapeDef _groundShapeDef = B2Types.b2DefaultShapeDef();
+            B2Shapes.b2CreatePolygonShape(_groundId, ref _groundShapeDef, ref _groundBox);
         }
         #endregion
 
@@ -43,6 +44,7 @@ namespace TRexGame.Plugins
         {
             CreateWorld();
             CreateGroundBox();
+            CreateDynamicBody();
         }
         #endregion
     }
